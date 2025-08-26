@@ -10,20 +10,19 @@ import Advantages from "./sections/Advantages/Advantages";
 import ApplicationForm from "./sections/ApplicationForm/ApplicationForm";
 
 function App() {
-
   return (
     <>
-    <Navbar />
-    <HomePage />
-    <Cards />
-    <Partners />
-    <MobileApp />
-    <Blog />
-    <Advantages />
-    <ApplicationForm />
-    <Footer />
-      </>
-  )
+      <Navbar />
+      <HomePage />
+      <Cards />
+      <Partners />
+      <MobileApp />
+      <Blog />
+      <Advantages />
+      <ApplicationForm />
+      <Footer />
+    </>
+  );
 }
 
-export default App
+export default App;
