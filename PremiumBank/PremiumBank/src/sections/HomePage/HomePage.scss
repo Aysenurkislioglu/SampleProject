@@ -1,0 +1,119 @@
+@import "../../styles/variables.scss";
+@import "../../styles/global.scss";
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  min-height: 100vh;
+  background: $gradient-background;
+  text-align: center;
+  color: #fff;
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+
+    span {
+      color: #facc15;
+    }
+  }
+
+  p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+  }
+
+  .home__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.3s ease;
+
+      &--primary {
+        background: #4f46e5;
+        color: #fff;
+
+        &:hover {
+          background: #4338ca;
+        }
+      }
+
+      &--secondary {
+        background: #fff;
+        color: #4f46e5;
+
+        &:hover {
+          background: #f3f4f6;
+        }
+      }
+    }
+  }
+
+  .card-stack {
+    position: relative;
+    width: 280px;
+    height: 180px;
+    max-width: 0 auto 3rem;
+
+    .card {
+      position: absolute;
+      width: 240px;
+      height: 150px;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: bold;
+      animation: loat 6s ease-in-out infinite;
+
+      &.platinum {
+        top: 0;
+        left: 30px;
+        background: linear-gradient(to bottom right, #374151, #111827);
+        opacity: 0.8;
+        transform: rotate(12deg);
+      }
+
+      &.gold {
+        top: 15px;
+        left: 15px;
+        background: $yellow-boxes;
+        opacity: 0.9;
+        transform: rotate(6deg);
+      }
+
+      &.classic {
+        top: 30px;
+        left: 0;
+        background: $blue-boxes;
+        transform: rotate(0deg);
+      }
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}
