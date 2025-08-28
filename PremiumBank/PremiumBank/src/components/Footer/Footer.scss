@@ -1,0 +1,120 @@
+@import "../../styles/variables.scss";
+
+footer {
+  background-color: rgb(33, 33, 33);
+  color: #adaeae;
+  font-weight: 400;
+  padding: 2.8rem 10% 2rem;
+  display: grid;
+  row-gap: 2rem;
+
+  .faq {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 2rem;
+    row-gap: 2rem;
+
+    .column {
+      display: flex;
+      flex-direction: column;
+      row-gap: 1.4rem;
+
+      .column-title {
+        font-size: 1.15rem;
+        font-weight: 600;
+        color: white;
+      }
+
+      // General column list style
+      .column-list {
+        display: grid;
+        row-gap: 0.8rem;
+
+        p {
+          cursor: pointer;
+          transition: color 0.4s;
+
+          &:hover {
+            color: white;
+          }
+        }
+      }
+
+      // Link list column style
+      .column-link-list {
+        display: flex;
+        column-gap: 0.9rem;
+        font-size: 1.6rem;
+
+        .column-link {
+          cursor: pointer;
+          transition: color 0.4s;
+
+          &:hover {
+            color: white;
+          }
+        }
+      }
+
+      // First column's title area with icons
+      .icons-title {
+        display: flex;
+        align-items: center;
+        column-gap: 0.8rem;
+
+        .icons {
+          position: relative;
+          color: rgb(33, 33, 33);
+
+          .checkmark {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $purple-boxes;
+            font-size: 1.75rem;
+            font-weight: 600;
+            padding: 2px;
+            border-radius: 50%;
+          }
+
+          .tr-lira {
+            position: absolute;
+            top: -25%;
+            right: -35%;
+            background-color: $yellow-boxes;
+            font-size: 0.8rem;
+            padding: 2px;
+            border-radius: 50%;
+          }
+        }
+      }
+    }
+  }
+
+  .line {
+    background-color: #adaeae1c;
+    width: 100%;
+    height: 1px;
+  }
+
+  .copyrights {
+    text-align: center;
+  }
+
+  // ------------- RESPONSIVE DESIGN ------------- //
+  @media screen and (max-width: 1070px) {
+    padding-inline: 4%;
+  }
+
+  @media screen and (max-width: 930px) {
+    padding-inline: 18%;
+
+    .faq {
+      grid-template-columns: 1fr;
+
+      .column {
+        row-gap: 0.8rem;
+      }
+    }
+  }
+}
