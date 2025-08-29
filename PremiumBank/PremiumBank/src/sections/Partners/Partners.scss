@@ -1,0 +1,24 @@
+@import "../../styles/mixins.scss";
+
+.partners-section {
+  background: #f8f9fa;
+  padding: 48px 0;
+  text-align: center;
+}
+
+.partners-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.partners-desc {
+  margin-bottom: 32px;
+}
+
+.partners-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 32px;
+}

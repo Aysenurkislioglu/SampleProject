@@ -1,0 +1,154 @@
+@import "../../../styles/mixins.scss";
+
+.mockup-bg {
+  background: linear-gradient(135deg, #7b2ff2 0%, #f357a8 100%);
+  border-radius: 24px;
+  padding: 32px;
+  min-width: 420px;
+  width: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Telefon kasası
+.phone-case {
+  background: transparent;
+  border-radius: 32px;
+  box-shadow: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Telefon ekranı
+.phone-screen {
+  background: white;
+  border-radius: 32px;
+  box-shadow: 0 4px 32px rgba(0,0,0,0.18);
+  border: 8px solid #222;
+  width: 320px;
+  min-height: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 24px;
+}
+
+// Başlık
+.mockup-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #3a2f8f;
+  text-align: center;
+  margin-bottom: 4px;
+}
+.mockup-sub {
+  font-size: 1rem;
+  color: #888;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+// Bakiye kutusu
+.mockup-balance {
+  background: #2970e6;
+  color: white;
+  border-radius: 16px;
+  padding: 32px 0 24px 32px;
+  width: 100%;
+  min-height: 110px;
+  margin-bottom: 28px;
+  box-shadow: 0 2px 12px rgba(41,112,230,0.16);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.mockup-balance span {
+  font-size: 1.15rem;
+  opacity: 0.85;
+  margin-bottom: 8px;
+}
+.mockup-balance strong {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-top: 2px;
+}
+
+// Kart listesi
+.mockup-list {
+  width: 100%;
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.mockup-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f6f6f6;
+  border-radius: 12px;
+  padding: 18px 24px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  width: 100%;
+}
+.mockup-item:last-child {
+  margin-bottom: 0;
+}
+.mockup-item span {
+  color: #222;
+  font-weight: 700;
+}
+
+// Responsive
+@media (max-width: 500px) {
+  .mockup-bg {
+    padding: 8px;
+  }
+  .phone-screen {
+    width: 98vw;
+    min-height: 340px;
+    padding: 16px 4px;
+  }
+}
+
+@media (max-width: 400px) {
+  .mockup-bg {
+    padding: 2px;
+    min-width: 0;
+    width: 100vw;
+    border-radius: 12px;
+  }
+  .phone-screen {
+    width: 96vw;
+    min-height: 220px;
+    padding: 8px 2px;
+    border-radius: 16px;
+    border-width: 4px;
+  }
+  .mockup-title {
+    font-size: 1.1rem;
+  }
+  .mockup-sub {
+    font-size: 0.9rem;
+  }
+  .mockup-balance {
+    padding: 12px 0 10px 12px;
+    min-height: 60px;
+    font-size: 1rem;
+  }
+  .mockup-balance strong {
+    font-size: 1.2rem;
+  }
+  .mockup-list {
+    gap: 8px;
+  }
+  .mockup-item {
+    padding: 8px 10px;
+    font-size: 1rem;
+  }
+}
