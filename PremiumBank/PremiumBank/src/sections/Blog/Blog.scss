@@ -1,0 +1,146 @@
+$section-max: 1280px; // bölüm genişliği
+$side-pad: 10px; // kenar boşluğu
+$gap: 40px; // kartlar arası boşluk
+
+$shadow-base: 0 10px 24px rgba(2, 6, 23, 0.08);
+$shadow-hover: 0 18px 38px rgba(2, 6, 23, 0.16);
+
+$gray-600: #4b5563;
+$gray-500: #6b7280;
+$indigo-600: #4f46e5;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.blog {
+  padding: 28px 0 40px;
+
+  &__header,
+  &__content {
+    width: min($section-max , 100% - $side-pad*2);
+
+  }
+
+  &__header {
+    font-size: 1.2rem;
+    margin-inline: auto; //inline satır olarak left ve rigth yani 
+    text-align: center;
+    margin-bottom: 30px;
+
+    h1 {
+
+      font-weight: 900;
+      margin-bottom: 20px;
+    }
+
+    p {
+
+      max-width: 500px; // yazı kırılsın diye yaptık başka yöntem  gidip metin içine kırılmasını istediğin yerden <br> yazabilşrsin
+      margin-inline: auto;
+      margin-bottom: 40px;
+    }
+  }
+
+  &__content {
+    margin-inline: auto;
+    display: grid;
+    gap: $gap;
+    grid-template-columns: repeat(3, 1fr);
+
+    @media (max-width:900px) {
+      width: min(700px, 100% - $side-pad*2);
+      margin-inline: auto;
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .blog-card {
+
+      border-radius: 16px;
+      overflow: hidden; // overflow child elemanlar parentın sınırını taşarsa taşan kısmın ne yapacağını ayarlar
+      box-shadow: $shadow-base;
+
+      display: flex; //top ve bottoma flex verdik alt alta olcaklar 
+      flex-direction: column;
+
+      transition: transform .28s ease, box-shadow .28s ease, filter .28s ease;
+      transform-origin: center;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: $shadow-hover;
+        filter: saturate(1.02);
+      }
+
+      &__top {
+
+        height: 160px;
+        color: aliceblue;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        svg {
+          font-size: 3.8rem;
+        }
+      }
+
+      .blog-card__top.is-guide {
+        background: linear-gradient(180deg, #3b82f6, #2563eb);
+      }
+
+      .blog-card__top.is-tips {
+        background: linear-gradient(180deg, #22c55e, #16a34a);
+      }
+
+      .blog-card__top.is-tech {
+        background: linear-gradient(180deg, #a855f7, #7c3aed);
+      }
+
+      &__bottom {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+
+
+        h3 {
+          padding: 10px;
+
+        }
+
+        p {
+
+          padding: 10px;
+        }
+
+        &__footer {
+          margin-top: auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 10px 10px 10px;
+
+          a {
+            color: #7c3aed;
+            transition: transform .28s ease, box-shadow .28s ease;
+            transform-origin: center;
+
+            &:hover {
+              transform: scale(1.05);
+            }
+          }
+
+          svg {
+            font-size: 0.8rem;
+          }
+        }
+      }
+
+    }
+  }
+}
