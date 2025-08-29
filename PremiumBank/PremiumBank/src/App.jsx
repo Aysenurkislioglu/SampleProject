@@ -1,5 +1,5 @@
 import "./styles/global.scss";
-import Navbar from "./components/navbar/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 import Footer from "./components/Footer/Footer";
 import HomePage from "./sections/HomePage/HomePage";
 import Cards from "./sections/Cards/Cards";
