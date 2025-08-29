@@ -1,0 +1,104 @@
+@import "../../styles/variables.scss";
+@import "../../styles/global.scss";
+@import "../../styles/mixins.scss";
+
+.cards {
+  padding: 4rem 2rem;
+  background: #fff;
+  text-align: center;
+  min-height: 100vh;
+
+  &__header {
+    margin-bottom: 2rem;
+
+    h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      color: $tittle-color;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      color: $text-color;
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+
+    @media (max-width: 992px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .card {
+    padding: 2rem;
+    border-radius: 16px;
+    color: #fff;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease,
+      background-color 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+
+    .card__icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+      color: #fff;
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .desc {
+      margin-bottom: 1rem;
+      opacity: 0.9;
+    }
+    ul {
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    button {
+      background: #fff;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        background: #f3f4f6;
+      }
+    }
+
+    &.gold {
+      background: $yellow-boxes;
+      @include glow(#ffd700);
+    }
+    &.platinum {
+      background: linear-gradient(to bottom right, #374151, #111827);
+      @include glow(#cccccc);
+    }
+    &.classic {
+      background: $blue-boxes;
+      @include glow(#1e90ff);
+    }
+  }
+}
