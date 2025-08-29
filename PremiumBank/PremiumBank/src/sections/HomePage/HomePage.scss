@@ -1,6 +1,9 @@
 @import "../../styles/variables.scss";
 @import "../../styles/global.scss";
 
+html {
+  scroll-behavior: smooth;
+}
 .home {
   display: flex;
   flex-direction: column;
@@ -48,6 +51,8 @@
 
         &:hover {
           background: #4338ca;
+          transform: translateY(-3px);
+          box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
         }
       }
 
@@ -57,51 +62,100 @@
 
         &:hover {
           background: #f3f4f6;
+          transform: translateY(-3px);
+          box-shadow: 0 8px 16px rgba(79, 70, 229, 0.15);
         }
       }
     }
   }
 
+  /* Card Stack */
   .card-stack {
     position: relative;
-    width: 280px;
-    height: 180px;
+    width: 300px;
+    height: 260px;
     max-width: 0 auto 3rem;
 
     .card {
       position: absolute;
-      width: 240px;
-      height: 150px;
+      width: 260px;
+      height: 160px;
       border-radius: 16px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
       display: flex;
       align-items: center;
       justify-content: center;
       color: #fff;
       font-weight: bold;
-      animation: loat 6s ease-in-out infinite;
+      transition: all 0.4s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      animation: float 4s ease-in-out infinite;
+      transform: rotate(var(--init-rotate));
+
+      .card-content {
+        padding: 1rem;
+        text-align: left;
+        width: 100%;
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+        margin-bottom: 1.5rem;
+
+        .card-type {
+          font-size: 0.75rem;
+          font-weight: 600;
+        }
+
+        .card-chip {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.2);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          .chip-inner {
+            width: 12px;
+            height: 12px;
+            background: #fff;
+            border-radius: 50%;
+          }
+        }
+      }
+
+      .card-number {
+        font-family: monospace;
+        font-size: 1rem;
+        letter-spacing: 0.1rem;
+      }
+
+      .card-bank {
+        font-size: 0.75rem;
+        opacity: 0.8;
+        margin-top: 0.5rem;
+      }
+
+      &:hover {
+        transform: rotate(0deg) scale(1.05) translateY(-5px);
+        z-index: 5;
+        box-shadow: 0 0 20px rgba(255, 255, 255, 0.4),
+          0 0 40px rgba(255, 255, 255, 0.3),
+          inset 0 0 12px rgba(255, 255, 255, 0.4);
+      }
 
       &.platinum {
-        top: 0;
-        left: 30px;
         background: linear-gradient(to bottom right, #374151, #111827);
-        opacity: 0.8;
-        transform: rotate(12deg);
       }
 
       &.gold {
-        top: 15px;
-        left: 15px;
         background: $yellow-boxes;
-        opacity: 0.9;
-        transform: rotate(6deg);
       }
 
       &.classic {
-        top: 30px;
-        left: 0;
         background: $blue-boxes;
-        transform: rotate(0deg);
       }
     }
   }
@@ -109,11 +163,28 @@
   @keyframes float {
     0%,
     100% {
-      transform: translateY(0);
+      transform: rotate(var(--init-rotate)) translateY(0);
     }
 
     50% {
-      transform: translateY(-10px);
+      transform: rotate(var(--init-rotate)) translateY(-10px);
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+
+    .card-stack {
+      max-width: 250px;
+      height: 300px;
+
+      .card {
+        width: 90%;
+        height: 180px;
+      }
     }
   }
 }

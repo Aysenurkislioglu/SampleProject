@@ -1,10 +1,12 @@
 @import "../../styles/variables.scss";
 @import "../../styles/global.scss";
+@import "../../styles/mixins.scss";
 
 .cards {
   padding: 4rem 2rem;
   background: #fff;
   text-align: center;
+  min-height: 100vh;
 
   &__header {
     margin-bottom: 2rem;
@@ -43,7 +45,18 @@
     border-radius: 16px;
     color: #fff;
     text-align: left;
-    transition: 0.3 ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease,
+      background-color 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+
+    .card__icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+      color: #fff;
+    }
 
     h3 {
       font-size: 1.4rem;
@@ -55,7 +68,6 @@
       margin-bottom: 1rem;
       opacity: 0.9;
     }
-
     ul {
       margin-bottom: 1.5rem;
       font-size: 0.95rem;
@@ -78,17 +90,15 @@
 
     &.gold {
       background: $yellow-boxes;
+      @include glow(#ffd700);
     }
     &.platinum {
       background: linear-gradient(to bottom right, #374151, #111827);
+      @include glow(#cccccc);
     }
     &.classic {
       background: $blue-boxes;
-    }
-
-    &:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+      @include glow(#1e90ff);
     }
   }
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import "./Cards.scss";
+import { FaRegCreditCard } from "react-icons/fa6";
 
 const cardData = [
   {
@@ -14,7 +15,7 @@ const cardData = [
     color: "gold",
   },
   {
-    tittle: "Platinum Kart",
+    title: "Platinum Kart",
     desc: "Sınırsız avantajlar ve VIP hizmetlerle lüks yaşam. ",
     features: [
       "100.000 TL'ye kadar limit",
@@ -25,7 +26,7 @@ const cardData = [
     color: "platinum",
   },
   {
-    tittle: "Classic Kart",
+    title: "Classic Kart",
     desc: "Günlük ihtiyaçlarınız için ideal, uygun faizli kart. ",
     features: [
       "25.000 TL'ye kadar limit",
@@ -39,7 +40,7 @@ const cardData = [
 
 const Cards = () => {
   return (
-    <section className="cards">
+    <section id="cards" className="cards">
       <div className="cards__header">
         <h2>Kredi Kartlarımız</h2>
         <p>
@@ -51,11 +52,13 @@ const Cards = () => {
       <div className="cards__grid">
         {cardData.map((card, i) => (
           <div className={`card ${card.color}`} key={i}>
+            <FaRegCreditCard className="card__icon" />
             <h3>{card.title}</h3>
+
             <p className="desc">{card.desc}</p>
             <ul>
               {card.features.map((f, idx) => (
-                <li key={idx}>• {f}</li>
+                <li key={idx}>{f}</li>
               ))}
             </ul>
             <button>Başvur →</button>
