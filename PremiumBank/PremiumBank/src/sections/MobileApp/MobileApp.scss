@@ -1,0 +1,147 @@
+@import "../../styles/mixins.scss";
+
+.mobileapp-section {
+  width: 100%;
+  padding: 64px 0;
+  background: white;
+}
+
+.mobileapp-content {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 96px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.mobileapp-info {
+  flex: 2 1 600px;
+  min-width: 400px;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  white-space: normal;
+}
+
+.mobileapp-title {
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 18px;
+  max-width: 100%;
+  white-space: normal;
+  overflow: visible;
+}
+
+.mobileapp-desc {
+  font-size: 1.25rem;
+  color: #444;
+  margin-bottom: 24px;
+  line-height: 1.4;
+}
+
+.mobileapp-features {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 28px;
+}
+.mobileapp-features li {
+  font-size: 1.08rem;
+  color: #222;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.check-icon {
+  color: #34a853;
+  font-size: 2rem;
+}   
+
+.mobileapp-buttons {
+  display: flex;
+  gap: 24px;
+}
+.appstore-btn, .googleplay-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #222;
+  color: white;
+  font-size: 1.08rem;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.appstore-btn {
+  background: #222;
+}
+.googleplay-btn {
+  background: #34a853;
+}
+.appstore-btn:hover {
+  background: #444;
+}
+.googleplay-btn:hover {
+  background: #219a43;
+}
+
+.mobileapp-mockup {
+  flex: 1 1 500px;
+  min-width: 420px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-left: 48px;
+}
+
+@media (max-width: 900px) {
+  .mobileapp-content {
+    flex-direction: column;
+    gap: 32px;
+  }
+  .mobileapp-info, .mobileapp-mockup {
+    max-width: 100%;
+    min-width: 0;
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .mobileapp-section {
+    padding: 32px 0;
+  }
+  .mobileapp-title {
+    font-size: 1.1rem;
+    max-width: 100%;
+  }
+  .mobileapp-desc {
+    font-size: 1rem;
+  }
+  .appstore-btn, .googleplay-btn {
+    font-size: 1rem;
+    padding: 8px 12px;
+  }
+  .mobileapp-mockup {
+    min-width: 0;
+    margin-left: 0;
+    justify-content: center;
+    width: 100%;
+    padding: 0;
+  }
+}
+
+@media (max-width: 400px) {
+  .mobileapp-section {
+    padding: 12px 0;
+  }
+  .mobileapp-mockup {
+    padding: 0;
+  }
+}
