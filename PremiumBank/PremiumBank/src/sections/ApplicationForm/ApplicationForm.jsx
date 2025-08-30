@@ -54,7 +54,19 @@ function ApplicationForm() {
     const [isLoading, setIsLoading] = useState(false)
     const [showMessage, setShowMessage] = useState(false)
 
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        const isFormComplete = Object.values(formData).every(
+            (v) => v !== "" && v !== false
+        )
+
+        if (!isFormComplete) {
+            alert("Lütfen tüm alanları doldurun.")
+            return;
+        }
+
+
         setIsLoading(true);
         setTimeout(() => {
             setIsLoading(false)
