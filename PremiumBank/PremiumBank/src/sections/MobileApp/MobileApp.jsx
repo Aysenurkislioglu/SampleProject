@@ -6,7 +6,7 @@ import "./MobileApp.scss";
 
 function MobileApp() {
   return (
-    <section className="mobileapp-section">
+    <section id='mobile-app'className="mobileapp-section">
       <div className="mobileapp-content">
         <div className="mobileapp-info">
           <h2 className="mobileapp-title">Mobil Bankacılık Uygulaması</h2>
