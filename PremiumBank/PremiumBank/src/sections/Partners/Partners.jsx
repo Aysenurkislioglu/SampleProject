@@ -37,7 +37,7 @@ const partners = [
 
 function Partners() {
   return (
-    <section className="partners-section">
+    <section id="partners" className="partners-section">
       <h2 className="partners-title">Güvenilir Ortaklarımız</h2>
       <p className="partners-desc">
         Dünya çapında tanınmış markalarla işbirliği yaparak size en iyi hizmeti
