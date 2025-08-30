@@ -64,7 +64,7 @@ function ApplicationForm() {
 
 
     return(
-        <div>
+        <div className="applicationForm" id="applicationForm">
 
             <div className="title-container">
                 <div className="title-icon-box"><FaRegFileAlt /></div>
