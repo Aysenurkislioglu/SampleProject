@@ -33,7 +33,7 @@ const cardsData = [
 
 const HomePage = () => {
   return (
-    <section className="home">
+    <section id="homePage" className="home">
       <div className="home__cards">
         <div className="card-stack">
           {cardsData.map((card, index) => (

@@ -2,11 +2,13 @@
 @import "../../styles/global.scss";
 @import "../../styles/mixins.scss";
 
+/* Title and Info */
 .cards {
-  padding: 4rem 2rem;
-  background: #fff;
+  scroll-margin-top: $navbar-gap;
+  padding: $section-padding;
+  background: $white-color;
   text-align: center;
-  min-height: 100vh;
+  min-height: $min-height;
 
   &__header {
     margin-bottom: 2rem;
@@ -20,7 +22,7 @@
 
     p {
       color: $text-color;
-      font-size: 1.2rem;
+      font-size: $text-font-size;
       max-width: 600px;
       margin: 0 auto;
     }
@@ -31,19 +33,21 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
 
-    @media (max-width: 992px) {
+    @include respons(md) {
       grid-template-columns: repeat(2, 1fr);
+      justify-content: center;
     }
-
-    @media (max-width: 600px) {
+    @include respons(sm) {
       grid-template-columns: 1fr;
+      justify-content: center;
     }
   }
 
+  /* Card Boxes */
   .card {
     padding: 2rem;
-    border-radius: 16px;
-    color: #fff;
+    border-radius: $radius-lg;
+    color: $white-color;
     text-align: left;
     transition: transform 0.3s ease, box-shadow 0.3s ease,
       background-color 0.3s ease;
@@ -55,11 +59,11 @@
       font-size: 2rem;
       margin-bottom: 1rem;
       display: block;
-      color: #fff;
+      color: $white-color;
     }
 
     h3 {
-      font-size: 1.4rem;
+      font-size: $h3-font-size;
       font-weight: 600;
       margin-bottom: 1rem;
     }
@@ -70,15 +74,15 @@
     }
     ul {
       margin-bottom: 1.5rem;
-      font-size: 0.95rem;
+      font-size: $ul-font-size;
       line-height: 1.6;
     }
 
     button {
-      background: #fff;
+      background: $white-color;
       border: none;
       padding: 0.6rem 1.2rem;
-      border-radius: 8px;
+      border-radius: $radius-md;
       font-weight: 600;
       cursor: pointer;
       transition: 0.3s;

@@ -1,22 +1,25 @@
 @import "../../styles/variables.scss";
-@import "../../styles/global.scss";
+@import "../../styles/mixins.scss";
 
 html {
   scroll-behavior: smooth;
 }
+
 .home {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 4rem 2rem;
-  min-height: 100vh;
+  padding: $section-padding;
+  min-height: $min-height;
   background: $gradient-background;
   text-align: center;
-  color: #fff;
+  color: $white-color;
+  margin-top: -72px;
 
+  /* Title and Paragraph */
   h1 {
-    font-size: 2.5rem;
+    font-size: $h1-font-size;
     font-weight: 700;
     margin-bottom: 1rem;
 
@@ -26,12 +29,13 @@ html {
   }
 
   p {
-    font-size: 1.2rem;
+    font-size: $text-font-size;
     opacity: 0.9;
     max-width: 700px;
     margin: 0 auto 2rem;
   }
 
+  /* Buttons */
   .home__buttons {
     display: flex;
     flex-wrap: wrap;
@@ -40,14 +44,14 @@ html {
 
     .btn {
       padding: 0.75rem 1.5rem;
-      border-radius: 8px;
+      border-radius: $radius-md;
       font-weight: 600;
       text-decoration: none;
       transition: 0.3s ease;
 
       &--primary {
         background: #4f46e5;
-        color: #fff;
+        color: $white-color;
 
         &:hover {
           background: #4338ca;
@@ -57,7 +61,7 @@ html {
       }
 
       &--secondary {
-        background: #fff;
+        background: $white-color;
         color: #4f46e5;
 
         &:hover {
@@ -75,17 +79,18 @@ html {
     width: 300px;
     height: 260px;
     max-width: 0 auto 3rem;
+    margin-top: $navbar-gap;
 
     .card {
       position: absolute;
       width: 260px;
       height: 160px;
-      border-radius: 16px;
+      border-radius: $radius-lg;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
+      color: $white-color;
       font-weight: bold;
       transition: all 0.4s ease, box-shadow 0.3s ease;
       cursor: pointer;
@@ -120,7 +125,7 @@ html {
           .chip-inner {
             width: 12px;
             height: 12px;
-            background: #fff;
+            background: $white-color;
             border-radius: 50%;
           }
         }
@@ -160,6 +165,7 @@ html {
     }
   }
 
+  /* Card Animation */
   @keyframes float {
     0%,
     100% {
@@ -172,13 +178,13 @@ html {
   }
 
   /* Responsive */
-  @media (max-width: 768px) {
+  @include respons(md) {
     h1 {
-      font-size: 2rem;
+      font-size: $r-h1-font-size;
     }
 
     .card-stack {
-      max-width: 250px;
+      max-width: 200px;
       height: 300px;
 
       .card {
