@@ -1,15 +1,42 @@
-$text-color: #343a40;
-$tittle-color: #000000;
-$footer-background: #14213d;
-$gradient-background: linear-gradient(
-  90deg,
-  rgba(73, 124, 196, 1) 0%,
-  rgba(114, 80, 153, 1) 72%,
-  rgba(57, 54, 201, 1) 100%,
-  rgba(15, 14, 14, 1) 100%,
-  rgba(0, 0, 0, 1) 88%
-);
+// Colors
+$text-color: #555;
+$tittle-color: #111;
+$white-color: #fff;
+$navbar-text-color: #343a40;
+$footer-background: #111827;
+$gradient-background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 $yellow-boxes: #ffc300;
 $green-boxes: #25a244;
 $blue-boxes: #4895ef;
 $purple-boxes: #9d4edd;
+
+// Font Sizes
+$h1-font-size: 2.5rem;
+$h2-font-size: 2rem;
+$h3-font-size: 1.4rem;
+$text-font-size: 1.2rem;
+$ul-font-size: 0.95rem;
+/* for responsive */
+$r-h1-font-size: 1.8rem;
+$r-h2-font-size: 1.3rem;
+$r-h3-font-size: 0.7rem;
+$r-text-font-size: 0.75rem;
+
+// Spacing scale
+$min-height: 100vh; /* full screen height */
+$section-padding: 4rem 2rem; /* top-bottom and right-left spacing for all sections */
+$navbar-gap: 72px; /* This should be given as "margin top" or "scroll margin top" at the beginning of the section. */
+
+// Radius
+$radius-sm: 0.375rem; //6px
+$radius-md: 0.5rem; //8px (ideal for buttons)
+$radius-lg: 1rem; //16px
+$radius-xl: 1.5rem; //24px
+$radius-xxl: 2rem; //32px
+
+// Breakpoints
+$bp-sm: 576px; //small phones
+$bp-md: 768px; //tablets
+$bp-lg: 992px; //small laptops
+$bp-xl: 1200px; //big screen laptops
+$bp-xxl: 1400px; //very large screens
