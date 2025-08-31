@@ -5,22 +5,22 @@ const partners = [
   {
     name: "VISA",
     description: "Güvenli Ödeme",
-    logo: "/partners_logo/visa_logo.png", 
+    logo: "/partners_logo/visa_logo.png",
   },
   {
     name: "Mastercard",
     description: "Mastercard",
-    logo: "/partners_logo/mastercard_logo.svg", 
+    logo: "/partners_logo/mastercard_logo.svg",
   },
   {
     name: "AMEX",
     description: "Premium",
-    logo: "/partners_logo/amex_logo.png", 
+    logo: "/partners_logo/amex_logo.png",
   },
-    {
+  {
     name: "Apple Pay",
     description: "Mobil Ödeme",
-    logo: "/partners_logo/applepay_logo.png", 
+    logo: "/partners_logo/applepay_logo.png",
   },
   {
     name: "G Pay",
@@ -32,7 +32,6 @@ const partners = [
     description: "Temassız",
     logo: "/partners_logo/spay_logo.png",
   },
-
 ];
 
 function Partners() {

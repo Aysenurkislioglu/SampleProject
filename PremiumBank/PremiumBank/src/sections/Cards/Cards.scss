@@ -105,4 +105,12 @@
       @include glow(#1e90ff);
     }
   }
+
+  @include respons(md) {
+    padding: $r-md-padding;
+  }
+
+  @include respons(sm) {
+    padding: $r-sm-padding;
+  }
 }

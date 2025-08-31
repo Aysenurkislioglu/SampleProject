@@ -37,28 +37,28 @@ function Navbar() {
           <div className="navbar__menu-container">
             <ul className="navbar__menu">
               <li>
-                <a href="#home">Ana Sayfa</a>
+                <a href="#homePage">Ana Sayfa</a>
               </li>
               <li>
-                <a href="#kredi-kartlari">Kredi Kartları</a>
+                <a href="#cards">Kredi Kartları</a>
               </li>
               <li>
-                <a href="#ortaklar">Ortaklar</a>
+                <a href="#partners">Ortaklar</a>
               </li>
               <li>
-                <a href="#mobil-app">Mobil App</a>
+                <a href="#mobile-app">Mobil App</a>
               </li>
               <li>
                 <a href="#blog">Blog</a>
               </li>
               <li>
-                <a href="#avantajlar">Avantajlar</a>
+                <a href="#advantages">Avantajlar</a>
               </li>
             </ul>
           </div>
 
           <div className="navbar__apply-box">
-            <a href="#basvuru" className="navbar__apply-btn">
+            <a href="#applicationForm" className="navbar__apply-btn">
               Başvuru Yap
             </a>
           </div>
@@ -84,22 +84,22 @@ function Navbar() {
         </div>
         <ul className="navbar__panel-menu">
           <li>
-            <a href="#" onClick={() => setMenuOpen(false)}>
+            <a href="#homePage" onClick={() => setMenuOpen(false)}>
               Ana Sayfa
             </a>
           </li>
           <li>
-            <a href="#kredi-kartlari" onClick={() => setMenuOpen(false)}>
+            <a href="#cards" onClick={() => setMenuOpen(false)}>
               Kredi Kartları
             </a>
           </li>
           <li>
-            <a href="#ortaklar" onClick={() => setMenuOpen(false)}>
+            <a href="#partners" onClick={() => setMenuOpen(false)}>
               Ortaklar
             </a>
           </li>
           <li>
-            <a href="#mobil-app" onClick={() => setMenuOpen(false)}>
+            <a href="#mobile-app" onClick={() => setMenuOpen(false)}>
               Mobil App
             </a>
           </li>
@@ -109,14 +109,14 @@ function Navbar() {
             </a>
           </li>
           <li>
-            <a href="#avantajlar" onClick={() => setMenuOpen(false)}>
+            <a href="#advantages" onClick={() => setMenuOpen(false)}>
               Avantajlar
             </a>
           </li>
         </ul>
         <div className="navbar__panel-cta">
           <a
-            href="#basvuru"
+            href="#applicationForm"
             className="navbar__apply-btn"
             onClick={() => setMenuOpen(false)}
           >

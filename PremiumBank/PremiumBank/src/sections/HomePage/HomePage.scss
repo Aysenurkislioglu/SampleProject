@@ -179,6 +179,8 @@ html {
 
   /* Responsive */
   @include respons(md) {
+    padding: $r-md-padding;
+
     h1 {
       font-size: $r-h1-font-size;
     }
@@ -192,5 +194,9 @@ html {
         height: 180px;
       }
     }
+  }
+
+  @include respons(sm) {
+    padding: $r-sm-padding;
   }
 }

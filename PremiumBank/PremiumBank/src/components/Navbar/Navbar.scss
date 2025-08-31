@@ -9,7 +9,7 @@
   justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 24px; // side padding so content doesn't touch edges
+  padding: 0 24px;
 }
 
 .navbar__left {
@@ -111,7 +111,7 @@
 .navbar__brand {
   font-size: 2rem;
   font-weight: bold;
-  background: linear-gradient(90deg, #9d4edd 0%, #4895ef 100%);
+  background: linear-gradient(90deg, #a566d9 0%, #66a6f0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

@@ -1,10 +1,5 @@
 @import '../../styles/variables.scss';
-
-@mixin flex-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+@import '../../styles/mixins.scss';
 
 .title-container {
     display: flex;
@@ -22,8 +17,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 65px;
-        width: 65px;
+        height: 55px;
+        width: 55px;
         border-radius: 25%;
 
         svg {
@@ -33,13 +28,28 @@
     }
 
     h1 {
-        font-size: 3.5rem;
+        font-size: 3rem;
         color: #2b0a79;
+
+        @include respons(xl) {
+            font-size: 2.8rem;
+        }
+        @include respons(lg) {
+            font-size: 2.2rem;
+        }
     }
 
     p {
-        font-size: 1.3rem;
+        font-size: $text-font-size;
         font-weight: 500;
+
+        @include respons(xl) {
+            font-size: 1.1rem;
+        }
+        @include respons(lg) {
+            text-align: center;
+            font-size: 0.95rem;
+        }
     }
 
     ul {
@@ -49,6 +59,11 @@
         font-size: 0.85rem;
         font-weight: 500;
         list-style: none;
+
+        @include respons(lg) {
+            flex-direction: column;
+            gap: 8px;
+        }
 
         li {
             display: flex;
@@ -79,7 +94,32 @@
     gap: 3rem;
     margin: 2rem auto;
     max-width: 1300px;
-    padding: 0 1rem;
+    padding: 4rem 2rem;
+
+    @include respons(xl) {
+        flex-direction: column;
+        margin: 2rem 3rem;
+        gap: 2rem;
+    }
+    @include respons(lg) {
+        flex-direction: column;
+        margin: 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .left-container, .right-container {
+
+        @include respons(xl) {
+            width: 100%;
+            height: auto;
+            padding: 25px;
+        }
+        @include respons(lg) {
+            width: 100%;
+            height: auto;
+            padding: 20px;
+        }
+    }
     
     
     .left-container {
@@ -87,12 +127,16 @@
         background-color: #ffffff;
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.20);
         border-radius: 20px;
-        height: 680px;
+        height: 620px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 50px;
+
+        @include respons(xl) {
+            gap: 30px;
+        }
         
         .title {
             display: flex;
@@ -101,25 +145,27 @@
             gap: 12px;
             
             .icon {
-                @include flex-center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 background-color: #8ac926;
-                width: 50px;
-                height: 50px;
+                width: 45px;
+                height: 45px;
                 border-radius: 25%;
 
                 svg {
-                    font-size: 25px;
+                    font-size: 20px;
                     color: #ffff;
                 }
             }
 
             h3 {
-                font-size: 2rem;
+                font-size: $h2-font-size;
                 color: #02010a;
             }
             
             p {
-                font-size: 1.2rem;
+                font-size: $text-font-size;
                 font-weight: 500;
             }
         }
@@ -128,20 +174,29 @@
             display: flex;
             flex-direction: column;
             gap: 30px;
+
+            @include respons(xl) {
+                width: 100%;
+            }
+            @include respons(lg) {
+                width: 100%;
+            }
             
             .card {
                 display: flex;
                 gap: 15px;
                 
                 .icon-box {
-                    @include flex-center;
-                    width: 50px;
-                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 45px;
+                    height: 45px;
                     border-radius: 25%;
                     transition: background-color 0.3s ease;
 
                     svg {
-                        font-size: 20px;
+                        font-size: 15px;
                         
                     }   
                 }
@@ -186,6 +241,10 @@
                         font-size: 1.1rem;
                     }
 
+                    p:nth-of-type(1) {
+                        font-size: 0.90rem;
+                    }
+
                     p:nth-of-type(2) {
                         font-size: 0.80rem;
                         font-weight: 700;
@@ -210,13 +269,22 @@
             gap: 15px;
             padding: 18px;
             background-color: lighten($color: #ffca3a, $amount: 32%);
-            width: 400px;
+            width: 350px;
             height: 70px;
             border: 1px solid #ffca3a;
             border-radius: 10px;
+
+            @include respons(xl) {
+                width: 100%;
+            }
+            @include respons(lg) {
+                width: 100%;
+            }
             
             .icon-box {
-                @include flex-center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 background-color: #ffca3a;
                 width: 35px;
                 height: 35px;
@@ -250,6 +318,10 @@
         min-height: 850px;
         padding: 45px;
         transition: all 0.4s ease;
+
+        @include respons(xl) {
+            padding: 25px;
+        }
 
         .app-title {
             display: flex;
@@ -301,30 +373,47 @@
             flex-direction: column;
             gap: 30px;
 
-            .row1 {
-                display: flex;
-                justify-content: space-between;
+            @include respons(xl) {
+                gap: 20px;
+            }
+            @include respons(lg) {
+                gap: 15px;
             }
 
-            .row2 {
+            .row1, .row2, .row4{
                 display: flex;
                 justify-content: space-between;
-            }
 
-            .row3 {
+                @include respons(xl) {
+                    gap: 10px;
+                }
+                @include respons(lg) {
+                    flex-direction: column;
+                    gap: 12px;
+                }
 
                 .form {
-                
-                    input {
-                        width: 695px;
+
+                    @include respons(xl) {
+                        max-width: 380px;
+                        width: 100%;
+                    }
+                    @include respons(lg) {
+                        width: 100%;
                     }
                 }
             }
 
-            .row4 {
-                display: flex;
-                justify-content: space-between;                        
-            } 
+            .row3 .form input {
+                width: 695px;
+
+                @include respons(xl) {
+                    width: 100%;
+                }
+                @include respons(lg) {
+                    width: 100%;
+                }
+            }
 
             .last-row {
                 display: flex;
@@ -357,6 +446,11 @@
                             text-decoration: underline;                            
                         }
                     }
+                }
+
+                @include respons(lg) {
+                    width: 100%;
+                    padding-bottom: 120px;
                 }
             }
 
@@ -407,6 +501,16 @@
                     100% {
                         transform: rotate(360deg);
                     }
+                }
+
+                @include respons(lg) {
+                    width: 100%;
+                }
+            }
+
+            .last-row, .btn {
+                @include respons(xl) {
+                    width: 100%;
                 }
             }
 
@@ -520,6 +624,13 @@
             outline: none;
             transition: all 0.2s ease-in-out;
 
+            @include respons(xl) {
+                width: 100%;
+            }
+            @include respons(lg) {
+                width: 100%;
+            }
+
             &:focus {
                 transform: translate(-3px);
                 border-color: #3a0ca3;
@@ -530,153 +641,6 @@
         input[type="checkbox"] {
             box-shadow: none;
             transform: none;
-        }
-    }
-}
-
-
-//----------RESPONSIVE----------//
-
-@media (max-width: 1200px) and (min-width: 860px) {
-    
-    .main-containers {
-        flex-direction: column;
-        margin: 2rem 3rem;
-        gap: 2rem;
-
-        .left-container, .right-container {
-            width: 100%;
-            height: auto;
-            padding: 25px;
-        }
-
-        .left-container {
-            gap: 30px;
-
-            .card-box {
-                width: 100%;
-            }
-
-            .special-box {
-                width: 100%;
-            }
-        }
-
-        .right-container {
-            padding: 25px;
-
-            .forms {
-                gap: 20px;
-
-                .row1, .row2, .row4 {
-                    gap: 10px;
-                    
-                    .form {
-                        max-width: 380px;
-                        width: 100%;
-                    }
-                }
-
-                .row3 .form input {
-                    width: 100%;
-                }
-
-                .last-row, .btn {
-                    width: 100%;
-                }
-            }
-
-            input, select {
-                width: 100%;
-            }
-        }
-    }
-
-    .title-container {
-        
-        h1 {
-            font-size: 2.8rem;
-        }
-
-        p {
-            font-size: 1.1rem;
-        }
-    }
-}
-
-
-@media (max-width: 859px) {
-    
-    .main-containers {
-        flex-direction: column;
-        margin: 1.5rem;
-        gap: 1.5rem;
-
-        .left-container, .right-container {
-            width: 100%;
-            height: auto;
-            padding: 20px;
-        }
-
-        .left-container {
-
-            .card-box {
-                width: 100%;
-            }
-
-            .special-box {
-                width: 100%;
-            }
-        }
-
-        .right-container {
-
-            .forms {
-                gap: 15px;
-
-                .row1, .row2, .row4 {
-                    flex-direction: column;
-                    gap: 12px;
-
-                    .form {
-                        width: 100%;
-                    }
-                }
-
-                .row3 .form input {
-                    width: 100%;
-                }
-
-                .last-row {
-                    width: 100%;
-                    padding-bottom: 120px;
-                }
-
-                .btn {
-                    width: 100%;
-                }                
-            }
-
-            input, select {
-                width: 100%;
-            }
-        }
-    }
-
-    .title-container {
-        
-        h1 {
-            font-size: 2.2rem;
-        }
-
-        p {
-            text-align: center;
-            font-size: 1rem;
-        }
-
-        ul {
-            flex-direction: column;
-            gap: 8px;
         }
     }
 }

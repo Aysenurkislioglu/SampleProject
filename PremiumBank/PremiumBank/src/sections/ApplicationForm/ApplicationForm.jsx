@@ -66,7 +66,6 @@ function ApplicationForm() {
             return;
         }
 
-
         setIsLoading(true);
         setTimeout(() => {
             setIsLoading(false)

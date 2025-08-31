@@ -1,13 +1,14 @@
-$section-max: 1280px; // bölüm genişliği
-$side-pad: 10px; // kenar boşluğu
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
+
+
 $gap: 40px; // kartlar arası boşluk
 
 $shadow-base: 0 10px 24px rgba(2, 6, 23, 0.08);
 $shadow-hover: 0 18px 38px rgba(2, 6, 23, 0.16);
 
-$gray-600: #4b5563;
-$gray-500: #6b7280;
-$indigo-600: #4f46e5;
+
 
 * {
   margin: 0;
@@ -16,13 +17,8 @@ $indigo-600: #4f46e5;
 }
 
 .blog {
-  padding: 28px 0 40px;
 
-  &__header,
-  &__content {
-    width: min($section-max , 100% - $side-pad*2);
-
-  }
+  padding: $section-padding;
 
   &__header {
     font-size: 1.2rem;
@@ -50,97 +46,97 @@ $indigo-600: #4f46e5;
     gap: $gap;
     grid-template-columns: repeat(3, 1fr);
 
-    @media (max-width:900px) {
-      width: min(700px, 100% - $side-pad*2);
+    @include respons(lg) {
+      padding: $r-md-padding;
       margin-inline: auto;
       grid-template-columns: 1fr;
-      gap: 20px;
+      gap: 40px;
+    }
+  }
+
+
+  .blog-card {
+
+    border-radius: 16px;
+    overflow: hidden; // overflow child elemanlar parentın sınırını taşarsa taşan kısmın ne yapacağını ayarlar
+    box-shadow: $shadow-base;
+
+    display: flex; //top ve bottoma flex verdik alt alta olcaklar 
+    flex-direction: column;
+
+    transition: transform .28s ease, box-shadow .28s ease, filter .28s ease;
+    transform-origin: center;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: $shadow-hover;
+      filter: saturate(1.02);
     }
 
-    .blog-card {
+    &__top {
 
-      border-radius: 16px;
-      overflow: hidden; // overflow child elemanlar parentın sınırını taşarsa taşan kısmın ne yapacağını ayarlar
-      box-shadow: $shadow-base;
-
-      display: flex; //top ve bottoma flex verdik alt alta olcaklar 
+      height: 160px;
+      color: aliceblue;
+      display: flex;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
 
-      transition: transform .28s ease, box-shadow .28s ease, filter .28s ease;
-      transform-origin: center;
+      svg {
+        font-size: 3.8rem;
+      }
+    }
 
-      &:hover {
-        transform: scale(1.05);
-        box-shadow: $shadow-hover;
-        filter: saturate(1.02);
+    .blog-card__top.is-guide {
+      background: linear-gradient(180deg, #4895ef, #2563eb);
+    }
+
+    .blog-card__top.is-tips {
+      background: linear-gradient(180deg, #22c55e, #25a244);
+    }
+
+    .blog-card__top.is-tech {
+      background: linear-gradient(180deg, #9d4edd, #7c3aed);
+    }
+
+    &__bottom {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+
+      h3 {
+        padding: 10px;
+
       }
 
-      &__top {
+      p {
 
-        height: 160px;
-        color: aliceblue;
+        padding: 10px;
+      }
+
+      &__footer {
+        margin-top: auto;
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
         align-items: center;
-        justify-content: center;
-        gap: 10px;
+        padding: 10px 10px 10px;
+
+        a {
+          color: #7c3aed;
+          transition: transform .28s ease, box-shadow .28s ease;
+          transform-origin: center;
+
+          &:hover {
+            transform: scale(1.05);
+          }
+        }
 
         svg {
-          font-size: 3.8rem;
+          font-size: 0.8rem;
         }
       }
-
-      .blog-card__top.is-guide {
-        background: linear-gradient(180deg, #3b82f6, #2563eb);
-      }
-
-      .blog-card__top.is-tips {
-        background: linear-gradient(180deg, #22c55e, #16a34a);
-      }
-
-      .blog-card__top.is-tech {
-        background: linear-gradient(180deg, #a855f7, #7c3aed);
-      }
-
-      &__bottom {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
-
-
-        h3 {
-          padding: 10px;
-
-        }
-
-        p {
-
-          padding: 10px;
-        }
-
-        &__footer {
-          margin-top: auto;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-          padding: 10px 10px 10px;
-
-          a {
-            color: #7c3aed;
-            transition: transform .28s ease, box-shadow .28s ease;
-            transform-origin: center;
-
-            &:hover {
-              transform: scale(1.05);
-            }
-          }
-
-          svg {
-            font-size: 0.8rem;
-          }
-        }
-      }
-
     }
   }
 }
