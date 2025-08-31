@@ -72,7 +72,7 @@ const HomePage = () => {
           kartlarımızla finansal özgürlüğünüzü keşfedin.
         </p>
         <div className="home__buttons">
-          <a href="#ApplicationForm" className="btn btn--primary">
+          <a href="#applicationForm" className="btn btn--primary">
             Hemen Başvur
           </a>
           <a href="#cards" className="btn btn--secondary">
