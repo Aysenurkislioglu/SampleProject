@@ -1,8 +1,9 @@
 @import "../../../styles/mixins.scss";
+@import "../../../styles/variables.scss";
 
 .mockup-bg {
-  background: linear-gradient(135deg, #7b2ff2 0%, #f357a8 100%);
-  border-radius: 24px;
+  background: $gradient-background;
+  border-radius: $radius-xl;
   padding: 32px;
   min-width: 420px;
   width: 480px;
@@ -14,7 +15,7 @@
 // Telefon kasası
 .phone-case {
   background: transparent;
-  border-radius: 32px;
+  border-radius: $radius-xxl;
   box-shadow: none;
   padding: 0;
   display: flex;
@@ -24,7 +25,7 @@
 
 // Telefon ekranı
 .phone-screen {
-  background: white;
+  background: $white-color;
   border-radius: 32px;
   box-shadow: 0 4px 32px rgba(0,0,0,0.18);
   border: 8px solid #222;
@@ -38,24 +39,23 @@
 
 // Başlık
 .mockup-title {
-  font-size: 1.5rem;
+  font-size: $h3-font-size;
   font-weight: 700;
   color: #3a2f8f;
   text-align: center;
   margin-bottom: 4px;
 }
 .mockup-sub {
-  font-size: 1rem;
-  color: #888;
+  color: $text-color;
   text-align: center;
   margin-bottom: 18px;
 }
 
 // Bakiye kutusu
 .mockup-balance {
-  background: #2970e6;
-  color: white;
-  border-radius: 16px;
+  background: $blue-boxes;
+  color: $white-color;
+  border-radius: $radius-lg;
   padding: 32px 0 24px 32px;
   width: 100%;
   min-height: 110px;
@@ -71,7 +71,7 @@
   margin-bottom: 8px;
 }
 .mockup-balance strong {
-  font-size: 2rem;
+  font-size: $h2-font-size;
   font-weight: 700;
   letter-spacing: 1px;
   margin-top: 2px;
@@ -105,7 +105,7 @@
 }
 
 // Responsive
-@media (max-width: 500px) {
+@include respons(sm) {
   .mockup-bg {
     padding: 8px;
   }
@@ -113,42 +113,5 @@
     width: 265px;
     min-height: 340px;
     padding: 16px 4px;
-  }
-}
-
-@media (max-width: 400px) {
-  .mockup-bg {
-    padding: 2px;
-    min-width: 0;
-    width: 100vw;
-    border-radius: 12px;
-  }
-  .phone-screen {
-    width: 190px;
-    min-height: 220px;
-    padding: 8px 2px;
-    border-radius: 16px;
-    border-width: 4px;
-  }
-  .mockup-title {
-    font-size: 1.1rem;
-  }
-  .mockup-sub {
-    font-size: 0.9rem;
-  }
-  .mockup-balance {
-    padding: 12px 0 10px 12px;
-    min-height: 60px;
-    font-size: 1rem;
-  }
-  .mockup-balance strong {
-    font-size: 1.2rem;
-  }
-  .mockup-list {
-    gap: 8px;
-  }
-  .mockup-item {
-    padding: 8px 10px;
-    font-size: 1rem;
   }
 }

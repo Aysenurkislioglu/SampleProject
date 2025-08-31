@@ -1,9 +1,11 @@
+@import "../../styles/variables.scss";
 @import "../../styles/mixins.scss";
+
 
 .mobileapp-section {
   width: 100%;
-  padding: 64px 0;
-  background: white;
+  padding: $section-padding;
+  background: $white-color;
 }
 
 .mobileapp-content {
@@ -25,14 +27,14 @@
   justify-content: center;
   align-items: flex-start;
   white-space: normal;
-    padding-left: 32px;
-    padding-right: 32px;
+  padding-left: 32px;
+  padding-right: 32px;
 }
 
 .mobileapp-title {
-  font-size: 2.6rem;
+  font-size: $h1-font-size;
   font-weight: 700;
-  color: #222;
+  color: $tittle-color;
   margin-bottom: 18px;
   max-width: 100%;
   white-space: normal;
@@ -40,8 +42,8 @@
 }
 
 .mobileapp-desc {
-  font-size: 1.25rem;
-  color: #444;
+  font-size: $text-font-size;
+  color: $text-color;
   margin-bottom: 24px;
   line-height: 1.4;
 }
@@ -52,15 +54,15 @@
   margin-bottom: 28px;
 }
 .mobileapp-features li {
-  font-size: 1.08rem;
-  color: #222;
+  font-size: $ul-font-size;
+  color: $tittle-color;
   margin-bottom: 18px;
   display: flex;
   align-items: center;
   gap: 12px;
 }
 .check-icon {
-  color: #34a853;
+  color: $green-boxes;
   font-size: 2rem;
 }   
 
@@ -72,20 +74,20 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  background: #222;
-  color: white;
-  font-size: 1.08rem;
+  background: $tittle-color;
+  color: $white-color;
+  font-size: $ul-font-size;
   font-weight: 600;
   padding: 10px 22px;
-  border-radius: 8px;
+  border-radius: $radius-md;
   text-decoration: none;
   transition: background 0.2s;
 }
 .appstore-btn {
-  background: #222;
+  background: $tittle-color;
 }
 .googleplay-btn {
-  background: #34a853;
+  background: $green-boxes;
 }
 .appstore-btn:hover {
   background: #444;
@@ -101,58 +103,58 @@
   justify-content: flex-end;
   align-items: center;
   margin-left: 48px;
-    padding-left: 32px;
-    padding-right: 32px;
+  padding-left: 32px;
+  padding-right: 32px;
 }
 
-@media (max-width: 900px) {
+@include respons(lg) {
   .mobileapp-content {
-  flex-direction: column;
-  gap: 32px;
-  align-items: center;
-  justify-content: center;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
   }
   .mobileapp-info, .mobileapp-mockup {
-  max-width: 100%;
-  min-width: 0;
-  flex: 1 1 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+    max-width: 100%;
+    min-width: 0;
+    flex: 1 1 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   .mobileapp-desc {
     text-align: center;
   }
 }
 
-@media (max-width: 600px) {
+@include respons(md) {
   .mobileapp-section {
     padding: 32px 0;
   }
   .mobileapp-title {
-    font-size: 1.1rem;
+    font-size: $r-h1-font-size;
     max-width: 100%;
   }
   .mobileapp-desc {
-    font-size: 1rem;
+    font-size: $r-text-font-size;
     text-align: center;
   }
   .appstore-btn, .googleplay-btn {
-    font-size: 1rem;
+    font-size: $r-text-font-size;
     padding: 8px 12px;
   }
   .mobileapp-mockup {
     min-width: 0;
     margin-left: 0;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 0;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 0;
   }
 }
 
-@media (max-width: 400px) {
+@include respons(sm) {
   .mobileapp-section {
     padding: 12px 0;
   }

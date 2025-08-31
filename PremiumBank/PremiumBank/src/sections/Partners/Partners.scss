@@ -1,19 +1,23 @@
+@import "../../styles/variables.scss";
 @import "../../styles/mixins.scss";
+
 
 .partners-section {
   background: #f8f9fa;
-  padding: 48px 0;
+  padding: $section-padding;
   text-align: center;
 }
 
 .partners-title {
-  font-size: 2rem;
+  font-size: $h2-font-size;
   font-weight: bold;
   margin-bottom: 8px;
+  color: $tittle-color;
 }
 
 .partners-desc {
   margin-bottom: 32px;
+  color: $text-color;
 }
 
 .partners-list {
