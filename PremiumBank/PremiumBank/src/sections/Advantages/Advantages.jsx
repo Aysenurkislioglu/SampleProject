@@ -3,7 +3,7 @@ import { FaCheckCircle } from "react-icons/fa";
 
 
 function Advantages() {
-  
+
   const features = [
     ` 7/24 Müşteri Hizmetleri`,
     ` Anında Onay Sistemi`,
@@ -20,7 +20,7 @@ function Advantages() {
 
   return (
 
-    <div className="advantages">
+    <div className="advantages" id="advantages">
 
       <div className="advantages__left">
         <h1>Neden PremiumBank?</h1>

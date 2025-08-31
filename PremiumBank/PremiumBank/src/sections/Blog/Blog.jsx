@@ -45,7 +45,7 @@ function Blog() {
   return (
 
 
-    <div className="blog">
+    <div className="blog" id="blog">
 
       <div className="blog__header">
         <h1>Finansal Rehber</h1>
