@@ -1,6 +1,8 @@
 @import '../../styles/variables.scss';
 @import '../../styles/mixins.scss';
 
+.applicationForm {
+
 .title-container {
     display: flex;
     flex-direction: column;
@@ -643,4 +645,6 @@
             transform: none;
         }
     }
+}
+
 }
