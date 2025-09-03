@@ -1,6 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+
 import App from "./App.jsx";
 import Footer from "./Components/Footer/Footer.jsx";
 import Navbar from "./Components/Navbar/Navbar.jsx";
@@ -13,14 +15,20 @@ import Events from "./pages/Events/Events.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <App />
-    <Home />
-    <Events />
-    <Footer />
-    <Navbar />
-    <Route path="/dashboard" element={<Dashboard />} />
-    <Route path="/login" element={<LogIn />} />
-    <Route path="/signin" element={<SignIn />} />
-    <Route path="/ticketinfo" element={<TicketInfo />} />
+    <BrowserRouter>
+      <App />
+      <Home />
+      <Events />
+      <Footer />
+      <Navbar />
+      <Routes>
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/signin" element={<SignIn />} />
+        <Route path="/ticketinfo" element={<TicketInfo />} />
+      </Routes>
+
+    </BrowserRouter>
+
   </StrictMode>
 );

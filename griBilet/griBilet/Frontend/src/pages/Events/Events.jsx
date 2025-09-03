@@ -5,4 +5,4 @@ function Events() {
   return <div>Events</div>;
 }
 
-export default HomeTickets;
+export default Events;
