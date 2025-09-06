@@ -12,18 +12,23 @@ $h2-font-size: 2rem;
 $h3-font-size: 1.4rem;
 $text-font-size: 1.2rem;
 $ul-font-size: 0.95rem;
+
 /* for responsive */
 $r-h1-font-size: 1.8rem;
 $r-h2-font-size: 1.3rem;
 $r-h3-font-size: 0.7rem;
 $r-text-font-size: 0.75rem;
 
+// Font Families
+$font-family-primary: "Inter", "Segoe UI", "Roboto", sans-serif;
+$font-family-secondary: "Poppins", "Arial", sans-serif;
+$font-family-mono: "Fira Code", "Monaco", monospace;
+
 // Spacing scale
 $min-height: 100vh; /* full screen height */
 $section-padding: 4rem 2rem; /* top-bottom and right-left spacing for all sections */
 $r-md-padding: 5rem 2.5rem; /* for medium responsive */
 $r-sm-padding: 6rem 3rem; /* for small responsive */
-$navbar-gap: 72px; /* This should be given as "margin top" or "scroll margin top" at the beginning of the section. */
 
 // Radius
 $radius-sm: 0.375rem; //6px
@@ -38,3 +43,8 @@ $bp-md: 768px; //tablets
 $bp-lg: 992px; //small laptops
 $bp-xl: 1200px; //big screen laptops
 $bp-xxl: 1400px; //very large screens
+
+// Transition Durations
+$transition-fast: 0.15s;
+$transition-base: 0.3s;
+$transition-slow: 0.5s;

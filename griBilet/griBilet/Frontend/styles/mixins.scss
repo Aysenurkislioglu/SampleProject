@@ -21,24 +21,11 @@
   }
 }
 
-// Soft Glow Effect
-@mixin glow($color) {
-  &:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 0 20px rgba($color, 0.4), 0 0 40px rgba($color, 0.3),
-      inset 0 0 12px rgba($color, 0.4);
-    filter: brightness(1.05);
-  }
-}
-
-// Animations
-@keyframes float {
-  0%,
-  100% {
-    transform: rotate(var(--init-rotate)) translateY(0);
-  }
-
-  50% {
-    transform: rotate(var(--init-rotate)) translateY(-10px);
-  }
+@mixin white__container {
+  padding: $section-padding;
+  border-radius: $radius-sm;
+  background-color: $white-color;
+  color: $text-color;
+  box-sizing: border-box;
+  font-family: $font-family-primary;
 }
