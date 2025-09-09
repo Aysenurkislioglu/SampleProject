@@ -6,6 +6,7 @@ import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import LogIn from "./pages/LogIn/LogIn.jsx";
 import SignIn from "./pages/SignIn/SignIn.jsx";
 import TicketInfo from "./pages/TicketInfo/TicketInfo.jsx";
+import "./styles/global.scss";
 
 function HomePageContent() {
   const [events, setEvents] = React.useState([]);
