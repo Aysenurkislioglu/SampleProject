@@ -6,16 +6,17 @@ import Categories from './categories/Categories.jsx';
 import FilterSidebar from './filterSideBar/FilterSideBar.jsx';
 import EventsGrid from './eventsGrid/EventsGrid.jsx';
 
+
 export default function Home() {
     return (
 
         <div className='homepage'>
             <PhotoSlider></PhotoSlider>
 
-           <div className='categories'>
+            <div className='categories'>
                 <Categories></Categories>
-           </div>
-           <div className='main'>
+            </div>
+            <div className='main'>
                 <div className='filter'>
                     <FilterSidebar></FilterSidebar>
                 </div>
@@ -25,7 +26,7 @@ export default function Home() {
                 </div>
 
 
-           </div>
+            </div>
 
         </div>
     )

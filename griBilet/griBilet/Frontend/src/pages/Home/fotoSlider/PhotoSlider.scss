@@ -1,11 +1,8 @@
-.photo-slider {
+.photoSlider {
   .slide {
-    position: relative;
-    width: 100%;
+
     height: 360px;
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.1);
+    cursor: pointer;
 
     img {
       width: 100%;
@@ -18,7 +15,7 @@
       position: absolute;
       left: 16px;
       bottom: 16px;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0, 0, 0, 0.5);
       color: #fff;
       padding: 6px 12px;
       border-radius: 12px;

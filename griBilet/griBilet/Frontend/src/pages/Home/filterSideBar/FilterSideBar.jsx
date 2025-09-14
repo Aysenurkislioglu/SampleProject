@@ -2,47 +2,74 @@ import { useEffect, useState } from "react";
 import useFilters from "../hooks/UseFilters";
 import useDebouncedEffect from "../hooks/UseDebouncedEffect";
 
-export default function FilterSidebar() {
+import "../filterSideBar/FilterSideBar.scss"
+
+
+
+export default function FilterSideBar() {
   const { filters, update, reset } = useFilters();
+
   const [q, setQ] = useState(filters.q);
-  const [minP, setMinP] = useState(filters.minPrice);
-  const [maxP, setMaxP] = useState(filters.maxPrice);
+  const [minPrice, setMinPrice] = useState(filters.minPrice);
+  const [maxPrice, setMaxPrice] = useState(filters.maxPrice);
 
-  // URL dışarıdan değişirse inputları senkronla
-  useEffect(() => setQ(filters.q), [filters.q]);
-  useEffect(() => setMinP(filters.minPrice), [filters.minPrice]);
-  useEffect(() => setMaxP(filters.maxPrice), [filters.maxPrice]);
 
-  // Yazarken 400ms sonra URL’i güncelle (debounce)
-  useDebouncedEffect(() => update({ q }), [q]);
-  useDebouncedEffect(() => update({ minPrice: minP }), [minP]);
-  useDebouncedEffect(() => update({ maxPrice: maxP }), [maxP]);
+  useEffect(() => { setQ(filters.q) }, [filters.q])
+  useEffect(() => { setMinPrice(filters.minPrice) }, [filters.minPrice])
+  useEffect(() => { setMaxPrice(filters.maxPrice) }, [filters.maxPrice])
+  useEffect(() => {
+    if (minPrice !== "" && maxPrice !== "" && minPrice > maxPrice) {
+
+      setError("Min fiyat Max fiyattan büyük olamaz.");
+      return;
+
+    }
+
+  }, [minPrice, maxPrice])
+
+
+  useDebouncedEffect(() => { update({ q }) }, [q])
+  useDebouncedEffect(() => { update({ minPrice }) }, [minPrice])
+  useDebouncedEffect(() => { update({ maxPrice }) }, [maxPrice])
 
   return (
-    <div className="filter">
-      <label>Etkinlik ara</label>
-      <input value={q} onChange={(e)=>setQ(e.target.value)} placeholder="Konser, tiyatro..." />
+    <div className="filterSideBar">
 
-      <label>Şehir</label>
-      <select value={filters.city} onChange={(e)=>update({ city: e.target.value })}>
-        <option value="">Hepsi</option>
-        <option value="istanbul">İstanbul</option>
-        <option value="ankara">Ankara</option>
-        <option value="izmir">İzmir</option>
-      </select>
+      <div className="search">
+        <label >Etkinlik Ara</label>
+        <input value={q} type="text" placeholder="Konser, tiyatro..." onChange={(e) => setQ(e.target.value)} />
 
-      <div className="grid-2">
-        <div>
-          <label>Min TL</label>
-          <input type="number" value={minP} onChange={(e)=>setMinP(e.target.value)} />
+      </div>
+
+      <div className="price">
+
+        <div className="price__min">
+          <label > Min TL</label>
+          <input type="number" value={minPrice} onChange={(e) => setMinPrice(e.target.value)} placeholder=" 0TL" />
         </div>
-        <div>
-          <label>Max TL</label>
-          <input type="number" value={maxP} onChange={(e)=>setMaxP(e.target.value)} />
+
+        <div className="price__max">
+          <label > Max TL</label>
+          <input type="number" value={maxPrice} onChange={(e) => setMaxPrice(e.target.value)} placeholder=" 50000TL" />
         </div>
       </div>
 
-      <button type="button" className="reset" onClick={reset}>Filtreleri sıfırla</button>
+      <div className="city">
+        <label >Şehir</label>
+        <select value={filters.city} onChange={(e) => update({ city: e.target.value })}>
+          <option value="">Hepsi</option>
+          <option value="istanbul">İstanbul</option>
+          <option value="ankara">Ankara</option>
+          <option value="izmir">İzmir</option>
+          <option value="çanakkale">Çanakkale</option>
+        </select>
+      </div>
+
+      <div className="reset">
+        <button type="button" onClick={reset}> Filtreleri Sıfırla </button>
+      </div>
+
     </div>
   );
-}
+
+}; 
