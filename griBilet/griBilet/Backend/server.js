@@ -17,51 +17,85 @@ const pool = mysql.createPool({
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
-  ssl: { rejectUnauthorized: false } // Railway genelde SSL istiyor
+  ssl: { rejectUnauthorized: false }
 });
 
-// Basit test route
-app.get('/', async (req, res) => {
+// Sağlık kontrolü
+app.get('/api/health', (req, res) => res.json({ ok: true }));
+
+app.get("/api/events", async (req, res, next) => {
   try {
-    const [rows] = await pool.query('SELECT NOW() AS now');
-    res.json({ ok: true, serverTime: rows[0].now });
+    const {
+      q = "",
+      city = "",
+      minPrice = "",
+      maxPrice = "",
+      category = ""
+    } = req.query;
+
+    const allowedCategories = new Set(["konser", "tiyatro", "festival", "standup"]);
+
+    const where = [];
+    const values = [];
+
+    if (q) {
+      where.push("(title LIKE ? OR artist_name LIKE ? OR venue_name LIKE ?)");
+      values.push(`%${q}%`, `%${q}%`, `%${q}%`);
+    }
+    if (city) {
+      where.push("LOWER(city)=LOWER(?)");
+      values.push(city);
+    }
+    if (category && allowedCategories.has(category)) {
+      where.push("category=?");
+      values.push(category);
+    }
+
+
+    if (minPrice !== "") {
+      where.push("price >= ?");
+      values.push(Number(minPrice));
+    }
+    if (maxPrice !== "") {
+      where.push("price <= ?");
+      values.push(Number(maxPrice));
+    }
+
+    const whereSQL = where.length ? `WHERE ${where.join(" AND ")} ` : "";
+
+    const [rows] = await pool.query(
+      `SELECT
+          id,
+          title,
+          category,
+          artist_name     AS artistName,
+          venue_name      AS venueName,
+          city,
+          UNIX_TIMESTAMP(start_datetime) * 1000 AS startTs,
+          price,
+          image_card_url  AS coverUrl,       -- kartta kullan
+          image_cover_url AS coverImageUrl   -- detay sayfada kullan
+        FROM events
+        ${whereSQL}
+        `, values
+    );
+
+    const data = rows.map(r => ({ ...r, price: Number(r.price), startTs: Number(r.startTs) }));
+    res.json({ data });
+
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ ok: false, error: 'DB bağlantı hatası' });
+    next(err);
   }
 });
 
-// Event listesi
-app.get('/api/events', async (req, res) => {
-  try {
-    const [rows] = await pool.query(`
-      SELECT id, title, category, artist_name, venue_name, city,
-             DATE_FORMAT(start_datetime, '%d %b %a • %H:%i') AS date_label,
-             price, image_card_url , image_cover_url
-      FROM events
-      ORDER BY start_datetime ASC
-      LIMIT 50
-    `);
-    res.json(rows);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'DB error' });
-  }
-});
 
-// Tek event detay
-app.get('/api/events/:id', async (req, res) => {
-  try {
-    const [rows] = await pool.query('SELECT * FROM events WHERE id = ?', [req.params.id]);
-    if (!rows.length) return res.status(404).json({ error: 'Event bulunamadı' });
-    res.json(rows[0]);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'DB error' });
-  }
+
+
+// Hata yakalayıcı
+app.use((err, req, res, next) => {
+  console.error(err);
+  res.status(500).json({ error: 'Internal server error' });
 });
 
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`API çalışıyor: http://localhost:${PORT}`);
-});
+app.listen(PORT, () => console.log(`API http://localhost:${PORT}`));
