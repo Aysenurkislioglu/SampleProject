@@ -11,9 +11,9 @@
     "start:backend": "npm start --prefix Backend"
   },
   "devDependencies": {
-    "concurrently": "^9.0.0"
+    "concurrently": "9.0.0"
   },
   "dependencies": {
-    "swiper": "^11.2.10"
+    "swiper": "11.2.10"
   }
 }
