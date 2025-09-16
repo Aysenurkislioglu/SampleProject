@@ -1,46 +1,42 @@
 @import "../../../styles/variables.scss";
 
 .categories {
-    background-color: $green-background;
+  background-color: $green-background;
 
-    .categoryList {
-        list-style: none;
-        display: grid;
-        grid-template-columns: repeat(4, minmax(140px, 1fr));
-        gap: 40px;
-        justify-items: center;
-        align-items: center;
+  .categoryList {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(140px, 1fr));
+    gap: 40px;
+    justify-items: center;
+    align-items: center;
+  }
+
+  .category {
+    appearance: none;
+    display: flex;
+    background: transparent;
+    border: 2px solid transparent;
+    cursor: pointer;
+
+    border-radius: 9999px;
+
+    p {
+      justify-items: center;
+      align-content: center;
     }
+  }
 
-    .category {
-        appearance: none;
-        display: flex;
-        background: transparent;
-        border: 2px solid transparent;
-        cursor: pointer;
+  .category:hover {
+    border-color: rgba(0, 0, 0, 0.12);
+  }
 
-        border-radius: 9999px;
+  .category.is-active {
+    border-color: rgba(0, 0, 0, 0.85);
+  }
 
-        p {
-
-            justify-items: center;
-            align-content: center;
-        }
-
-    }
-
-    .category:hover {
-
-        border-color: rgba(0, 0, 0, 0.12);
-    }
-
-    .category.is-active {
-        border-color: rgba(0, 0, 0, 0.85);
-    }
-
-    button:active {
-        // buttona basınca tıklama hissi
-        transform: translateY(1px);
-    }
-
+  button:active {
+    // buttona basınca tıklama hissi
+    transform: translateY(1px);
+  }
 }

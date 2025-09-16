@@ -1,7 +1,7 @@
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const mysql = require('mysql2/promise');
+require("dotenv").config();
+const express = require("express");
+const cors = require("cors");
+const mysql = require("mysql2/promise");
 
 const app = express();
 app.use(cors());
@@ -17,11 +17,11 @@ const pool = mysql.createPool({
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
-  ssl: { rejectUnauthorized: false }
+  ssl: { rejectUnauthorized: false },
 });
 
 // Sağlık kontrolü
-app.get('/api/health', (req, res) => res.json({ ok: true }));
+app.get("/api/health", (req, res) => res.json({ ok: true }));
 
 app.get("/api/events", async (req, res, next) => {
   try {
@@ -30,10 +30,15 @@ app.get("/api/events", async (req, res, next) => {
       city = "",
       minPrice = "",
       maxPrice = "",
-      category = ""
+      category = "",
     } = req.query;
 
-    const allowedCategories = new Set(["konser", "tiyatro", "festival", "standup"]);
+    const allowedCategories = new Set([
+      "konser",
+      "tiyatro",
+      "festival",
+      "standup",
+    ]);
 
     const where = [];
     const values = [];
@@ -50,7 +55,6 @@ app.get("/api/events", async (req, res, next) => {
       where.push("category=?");
       values.push(category);
     }
-
 
     if (minPrice !== "") {
       where.push("price >= ?");
@@ -77,24 +81,25 @@ app.get("/api/events", async (req, res, next) => {
           image_cover_url AS coverImageUrl   -- detay sayfada kullan
         FROM events
         ${whereSQL}
-        `, values
+        `,
+      values
     );
 
-    const data = rows.map(r => ({ ...r, price: Number(r.price), startTs: Number(r.startTs) }));
+    const data = rows.map((r) => ({
+      ...r,
+      price: Number(r.price),
+      startTs: Number(r.startTs),
+    }));
     res.json({ data });
-
   } catch (err) {
     next(err);
   }
 });
 
-
-
-
 // Hata yakalayıcı
 app.use((err, req, res, next) => {
   console.error(err);
-  res.status(500).json({ error: 'Internal server error' });
+  res.status(500).json({ error: "Internal server error" });
 });
 
 const PORT = process.env.PORT || 3000;

@@ -1,19 +1,19 @@
 import { useMemo } from "react";
 import { useSearchParams } from "react-router-dom";
 
-
-
 export default function useFilters() {
   const [params, setParams] = useSearchParams(); // linkteki paramları tuttuk
 
-  const filters = useMemo(() => ({
-    q: params.get("q") || "",
-    city: params.get("city") || "",
-    category: params.get("category") || "",
-    minPrice: params.get("minPrice") || "",
-    maxPrice: params.get("maxPrice") || ""
-  }), [params])
-
+  const filters = useMemo(
+    () => ({
+      q: params.get("q") || "",
+      city: params.get("city") || "",
+      category: params.get("category") || "",
+      minPrice: params.get("minPrice") || "",
+      maxPrice: params.get("maxPrice") || "",
+    }),
+    [params]
+  );
 
   const update = (patch, { replace = true } = {}) => {
     const nextParams = new URLSearchParams(params); //kopya üzerinde çalış
@@ -26,14 +26,11 @@ export default function useFilters() {
       }
 
       setParams(nextParams, { replace }); // yeni urleyi ata
-
     }
-
-  }
+  };
 
   const reset = () => setParams(new URLSearchParams(), { replace: true });
 
   return { filters, update, reset };
   // filter obje içinde bilgiler bulunur update ve reset function
-
 }

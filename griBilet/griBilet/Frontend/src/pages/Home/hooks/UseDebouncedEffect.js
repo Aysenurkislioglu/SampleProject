@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 
-
 // fn function , deps dependencies
 export default function useDebouncedEffect(fn, deps, delay = 400) {
   const first = useRef(true);
@@ -12,7 +11,5 @@ export default function useDebouncedEffect(fn, deps, delay = 400) {
     }
     const id = setTimeout(fn, delay);
     return () => clearTimeout(id);
-  }, deps)
-
-
+  }, deps);
 }

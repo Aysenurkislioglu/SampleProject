@@ -2,22 +2,20 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import useFilters from "../hooks/UseFilters";
 
+import "../eventsGrid/EventsGrid.scss";
 
-import "../eventsGrid/EventsGrid.scss"
-
-
-
-
-const slugify = (s) => s.toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]/g, "");
+const slugify = (s) =>
+  s
+    .toLowerCase()
+    .replace(/\s+/g, "-")
+    .replace(/[^\w-]/g, "");
 
 export default function EventsGrid() {
-
   const [events, setEvents] = useState([]);
   const { filters } = useFilters();
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-
     const copyParams = new URLSearchParams();
 
     if (filters.q) {
@@ -38,17 +36,18 @@ export default function EventsGrid() {
 
     setLoading(true);
 
-    fetch(`/api/events${copyParams.toString() ? `?${copyParams}` : ""}`).then(r => r.json()).then(d => setEvents(d.data || d)).catch(console.error).finally(() => setLoading(false));
-
+    fetch(`/api/events${copyParams.toString() ? `?${copyParams}` : ""}`)
+      .then((r) => r.json())
+      .then((d) => setEvents(d.data || d))
+      .catch(console.error)
+      .finally(() => setLoading(false));
 
     if (loading) return <div>Yükleniyor…</div>;
-
   }, [filters]);
 
   return (
     <div className="eventsGrid" id="events">
-      {events.map(e => (
-
+      {events.map((e) => (
         <Link
           key={e.id}
           className="event-card"
@@ -65,23 +64,17 @@ export default function EventsGrid() {
               {e.city} •{" "}
               {e.startTs
                 ? new Date(e.startTs).toLocaleDateString("tr-TR", {
-                  day: "2-digit",
-                  month: "long",
-                  year: "numeric"
-                })
+                    day: "2-digit",
+                    month: "long",
+                    year: "numeric",
+                  })
                 : "-"}
             </p>
-
 
             <p>{e.price} TL</p>
           </div>
         </Link>
-
-
       ))}
     </div>
   );
-
-
 }
-
