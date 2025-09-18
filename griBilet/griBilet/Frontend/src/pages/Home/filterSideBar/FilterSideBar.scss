@@ -1,0 +1,62 @@
+@import "../../../styles/mixins.scss";
+@import "../../../styles/variables.scss";
+
+.filterSideBar {
+  @include white__container;
+
+  .search {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    row-gap: 4px;
+  }
+
+  .price {
+    display: flex;
+    flex-direction: column;
+
+    &__min {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      row-gap: 4px;
+    }
+
+    &__max {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      row-gap: 4px;
+    }
+  }
+
+  .city {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    row-gap: 4px;
+  }
+
+  .reset {
+    text-align: center;
+
+    button {
+      appearance: none;
+      border: 2px solid gray;
+      border-color: rgba(0, 0, 0, 0.12);
+      border-radius: 12px;
+      background-color: $green-background;
+      color: white;
+      padding: 10px;
+      font-size: larger;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+      transition: box-shadow 0.15s ease, transform 0.06s ease;
+      cursor: pointer;
+
+      &:hover {
+        transform: scale(1.05);
+        transition: transform 0.2s ease;
+      }
+    }
+  }
+}

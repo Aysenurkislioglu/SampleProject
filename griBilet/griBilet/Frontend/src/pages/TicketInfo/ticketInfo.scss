@@ -1,0 +1,85 @@
+@import "../../styles/mixins.scss";
+
+body {
+  background-color: #edf0f2;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.ticket-info-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+
+  .left-area {
+    display: grid;
+    justify-content: center;
+    row-gap: 1rem;
+    text-align: center;
+    
+    .image {
+      padding-inline: 4rem;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  .right-area {
+    @include white__container;
+    display: grid;
+    row-gap: 1.5rem;
+
+    .ticket-info {
+          display: flex;
+          justify-content: space-between;
+          padding-bottom: 1rem;
+
+          .info-item {
+            display: flex;
+            align-items: center;
+            column-gap: 0.5rem;
+
+            .icon {
+              font-size: 1.5rem;
+            }
+          }
+        }
+
+    .button-area {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        column-gap: 2rem;
+
+      .add-to-favourite {
+        display: flex;
+        align-items: center;
+        column-gap: 0.5rem;
+         color: $red-text-color;
+
+        .icon {
+           
+          font-size: 3rem;
+        }
+      }
+
+      .purchase-area {
+        display: flex;
+        align-items: center;
+        column-gap: 0.5rem;
+
+        .button {
+            background-color: $green-background;
+            color: white;
+            padding: 0.8rem 1.6rem;
+            border-radius: 30px;
+        }
+      }
+    }
+  }
+}
