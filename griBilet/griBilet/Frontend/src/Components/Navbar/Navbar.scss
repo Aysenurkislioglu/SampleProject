@@ -1,0 +1,54 @@
+@use "../../styles/variables.scss" as vars;
+
+
+.navbar {
+
+    .header-box {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-color: vars.$green-background;
+        height: 80px;
+        padding: 0 20px;
+        
+        .header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+
+            img {
+                height: 50px;
+                width: 50px;
+                transform: rotate(-90deg);
+            }
+
+            h1 {
+                font-family: "Poppins", "Arial", sans-serif;
+                font-size: 3.5rem; //biraz daha büyük olabilir belki
+                color: vars.$text-color;
+            }
+        }
+
+        .sign-in {
+            display: flex;
+
+            h3 {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: vars.$h3-font-size;
+            }
+
+            .user-icon {
+                font-size: 1.7rem;
+
+            }
+        }
+        
+    }
+
+    
+
+    
+
+}
