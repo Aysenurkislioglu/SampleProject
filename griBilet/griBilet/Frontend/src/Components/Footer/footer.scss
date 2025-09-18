@@ -1,0 +1,45 @@
+@use "../../styles/variables.scss" as vars;
+
+.footer {
+    background-color: vars.$footer-background;
+    color: vars.$white-color;
+    height: 180px; //ayarlanabilir
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .footer-columns {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 7rem;
+
+        line-height: 2.2rem;
+
+        .footer-column {
+            
+            h1 {
+                color: vars.$green-background;
+            }
+
+            h3 {
+                color: lightgray;
+            }
+
+            .socials-img {
+                display: flex;
+                gap: 10px;
+
+                img {
+                    height: 50px;
+                    width: 50px;
+                }
+            }
+
+
+
+
+        }
+
+
+    }
+}
