@@ -96,6 +96,31 @@ app.get("/api/events", async (req, res, next) => {
   }
 });
 
+app.post("/api/signin", async (req, res) => {
+  try {
+    const { email, password, name } = req.body;
+    if (!email || !password || !name) {
+      return res.status(400).json({ error: "Tüm alanlar zorunlu!" });
+    }
+    const [existing] = await pool.query(
+      "SELECT * FROM users WHERE email = ?",
+      [email]
+    );
+    if (existing.length > 0) {
+      return res.status(409).json({ error: "Bu e-posta zaten kayıtlı!" });
+    }
+    await pool.query(
+      "INSERT INTO users (email, password, name) VALUES (?, ?, ?)",
+      [email, password, name]
+    );
+    res.json({ success: true });
+  } catch (err) {
+    console.error("Kayıt hatası:", err); // <-- Hata detayını terminale yazdırır
+    res.status(500).json({ error: "Sunucu hatası!" });
+  }
+});
+
+
 // Hata yakalayıcı
 app.use((err, req, res, next) => {
   console.error(err);
