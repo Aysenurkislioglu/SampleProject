@@ -2,6 +2,8 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql2/promise");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const app = express();
 app.use(cors());
@@ -20,8 +22,90 @@ const pool = mysql.createPool({
   ssl: { rejectUnauthorized: false },
 });
 
+// Utility: generate JWT
+function generateToken(user) {
+  const payload = { id: user.id, email: user.email };
+  const secret = process.env.JWT_SECRET || "dev-secret-change-me";
+  return jwt.sign(payload, secret, { expiresIn: "7d" });
+}
+
 // Sağlık kontrolü
 app.get("/api/health", (req, res) => res.json({ ok: true }));
+
+// LOGIN
+app.post("/api/login", async (req, res) => {
+  try {
+    let { email, password } = req.body || {};
+
+    if (typeof email !== "string" || typeof password !== "string") {
+      return res
+        .status(400)
+        .json({ success: false, error: "Email ve şifre gerekli" });
+    }
+
+    email = email.trim().toLowerCase();
+    password = password.trim();
+
+    if (!email || !password) {
+      return res
+        .status(400)
+        .json({ success: false, error: "Email ve şifre gerekli" });
+    }
+
+    const [rows] = await pool.query(
+      `SELECT idusers AS id, name, email, password
+       FROM users
+       WHERE LOWER(email) = ?
+       LIMIT 1`,
+      [email]
+    );
+
+    if (!rows.length) {
+      return res
+        .status(401)
+        .json({ success: false, error: "Geçersiz e-posta veya şifre" });
+    }
+
+    const user = rows[0];
+
+    const stored = user.password || "";
+    let passwordOk = false;
+    if (
+      stored.startsWith("$2a$") ||
+      stored.startsWith("$2b$") ||
+      stored.startsWith("$2y$")
+    ) {
+      try {
+        passwordOk = await bcrypt.compare(password, stored);
+      } catch (e) {
+        console.error("Bcrypt compare error", e);
+        return res
+          .status(500)
+          .json({ success: false, error: "Şifre doğrulama hatası" });
+      }
+    } else {
+      passwordOk = stored === password;
+    }
+
+    if (!passwordOk) {
+      return res
+        .status(401)
+        .json({ success: false, error: "Geçersiz e-posta veya şifre" });
+    }
+
+    const token = generateToken({ id: user.id, email: user.email });
+
+    return res.json({
+      success: true,
+      message: "Giriş başarılı",
+      token,
+      user: { id: user.id, email: user.email, name: user.name },
+    });
+  } catch (error) {
+    console.error("Login route error", error);
+    return res.status(500).json({ success: false, error: "Sunucu hatası" });
+  }
+});
 
 app.get("/api/events", async (req, res, next) => {
   try {

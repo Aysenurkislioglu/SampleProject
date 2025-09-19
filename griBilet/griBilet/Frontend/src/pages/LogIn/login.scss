@@ -1,0 +1,167 @@
+@import "../../styles/variables.scss";
+
+body {
+  background-color: $light-text-color;
+}
+
+h2 {
+  font-family: $font-family-primary;
+  font-size: $h2-font-size;
+}
+
+h3 {
+  font-family: $font-family-secondary;
+  font-size: $h3-font-size;
+}
+
+// BANNER
+.section.banner {
+  background-color: $green-background;
+  color: $footer-background;
+  padding: $section-padding;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  .banner__content {
+    width: 100%;
+  }
+
+  .banner__subtitle {
+    font-family: $font-family-secondary;
+    font-size: $h2-font-size;
+    color: $white-color;
+  }
+}
+
+#login-banner-title {
+  font-family: $font-family-primary;
+  font-size: $h1-font-size;
+  color: $white-color;
+}
+
+// SİGNUP BOX
+.auth-boxes {
+  padding: $section-padding;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: $h2-font-size;
+  column-gap: 0;
+  align-items: center;
+}
+
+@media (min-width: $bp-md) {
+  .auth-boxes {
+    grid-template-columns: 1fr 1fr;
+    column-gap: $h2-font-size;
+    row-gap: 0;
+  }
+}
+
+.section.left {
+  background-color: $white-color;
+  padding: $section-padding;
+  color: $text-color;
+  box-shadow: 0 10px 24px rgba($footer-background, 0.12);
+  display: grid;
+  row-gap: $h3-font-size;
+  border-radius: $radius-lg;
+  justify-items: center;
+  align-items: center;
+}
+
+#signup-title {
+  font-family: $font-family-secondary;
+  font-size: $h3-font-size;
+}
+
+#signup-subtitle {
+  font-family: $font-family-secondary;
+  font-size: $h3-font-size;
+  color: $green-background;
+}
+
+button {
+  font-family: $font-family-primary;
+  font-size: $text-font-size;
+  border-radius: $radius-lg;
+  padding: $r-text-font-size;
+  border: 0px;
+  cursor: pointer;
+  background-color: $green-background;
+  color: $white-color;
+  justify-self: center;
+  inline-size: max-content;
+}
+
+button:hover:not(:disabled) {
+  box-shadow: 0 12px 24px rgba($footer-background, 0.2);
+  transform: translateY(-2px);
+}
+
+// LOGIN BOX
+.section.right {
+  background-color: $white-color;
+  padding: $section-padding;
+  color: $text-color;
+  box-shadow: 0 10px 24px rgba($footer-background, 0.12);
+  display: grid;
+  border-radius: $radius-lg;
+}
+
+@media (max-width: $bp-sm) {
+  #login-banner-title {
+    font-size: $r-h1-font-size;
+  }
+  .banner__subtitle {
+    font-size: $r-h2-font-size;
+  }
+  h2 {
+    font-size: $r-h2-font-size;
+  }
+  p,
+  input,
+  button,
+  h3,
+  #signup-title,
+  #signup-subtitle {
+    font-size: $r-h3-font-size;
+  }
+}
+
+.section.right form {
+  display: grid;
+  row-gap: $h3-font-size;
+}
+
+input {
+  font-family: $font-family-primary;
+  font-size: $text-font-size;
+  padding: $r-text-font-size;
+  border: 0px;
+  box-shadow: inset 0 1px 2px rgba($footer-background, 0.1);
+  border-radius: $radius-md;
+  background-color: $light-text-color;
+}
+
+// Icon input wrappers
+.input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper input {
+  padding-left: calc($h3-font-size + 1.2rem);
+  width: 100%;
+}
+
+.input-icon {
+  position: absolute;
+  left: 0.85rem;
+  font-size: $h3-font-size;
+  color: $green-background;
+  display: flex;
+  align-items: center;
+}
