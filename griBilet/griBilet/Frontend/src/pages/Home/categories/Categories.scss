@@ -2,6 +2,7 @@
 
 .categories {
   background-color: $green-background;
+  padding: 5px;
 
   .categoryList {
     list-style: none;
@@ -18,25 +19,26 @@
     background: transparent;
     border: 2px solid transparent;
     cursor: pointer;
-
     border-radius: 9999px;
+
+    transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 
     p {
       justify-items: center;
       align-content: center;
     }
-  }
 
-  .category:hover {
-    border-color: rgba(0, 0, 0, 0.12);
+    &:hover {
+      border-color: rgba(0, 0, 0, 0.12);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+    }
   }
 
   .category.is-active {
-    border-color: rgba(0, 0, 0, 0.85);
+    border-color: rgba(0, 0, 0, 0.12);
   }
 
   button:active {
-    // buttona basınca tıklama hissi
     transform: translateY(1px);
   }
 }
