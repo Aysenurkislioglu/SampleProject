@@ -1,0 +1,331 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
+
+.green-container {
+  background-color: $green-background;
+  color: $light-text-color;
+  padding-bottom: 20px;
+  h2 {
+    font-size: $h2-font-size;
+    margin-bottom: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+  p {
+    font-size: $text-font-size;
+  }
+}
+
+.sign-in-main {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 100px;
+  padding-top: 48px;
+  padding-bottom: 0;
+
+  .info-box {
+    background: #fff;
+    border-radius: $radius-xl;
+    box-shadow: 0 2px 16px #e8e8e8;
+    padding: 2.2rem 2rem 1.5rem 2rem;
+    width: 550px;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .info-row {
+      border-bottom: 1px solid #e8e8e8;
+      padding-bottom: 1.1rem;
+      margin-bottom: 1.1rem;
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .info-icon-title-desc {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+
+        .info-icon {
+          font-size: 2.2rem;
+          flex-shrink: 0;
+          margin-top: 2px;
+        }
+
+        .green-icon {
+          color: $green-background;
+        }
+
+        .black-icon {
+          color: #181818;
+        }
+      }
+
+      .info-title {
+        color: $green-background;
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 0.2rem;
+      }
+      .info-desc {
+        color: $text-color;
+        font-size: 1rem;
+      }
+    }
+
+    .info-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 1.2rem;
+      .info-footer-text {
+        color: #d1d5db;
+        font-size: 1.05rem;
+      }
+      .info-login-btn {
+        background: $green-background;
+        color: $white-color;
+        border: none;
+        border-radius: $radius-xl;
+        padding: 0.6rem 2rem;
+        font-size: 1.15rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.2s;
+        &:hover {
+          background: darkgreen;
+        }
+      }
+    }
+  }
+
+  .form-box {
+    background: #fff;
+    border-radius: $radius-xl;
+    box-shadow: 0 2px 16px #e8e8e8;
+    padding: 2.2rem 2rem 1.5rem 2rem;
+    width: 450px;
+    min-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -100px;
+    z-index: 2;
+    position: relative;
+
+    form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .form-title {
+      color: #18196b;
+      font-size: $h2-font-size;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.5px;
+    }
+
+    .form-label {
+      font-size: 1.1rem;
+      color: #18196b;
+      font-weight: 600;
+      margin-bottom: 0.2rem;
+      margin-top: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .icon-user,
+    .icon-lock,
+    .icon-email {
+      font-size: 1.3rem;
+      margin-right: 0.2rem;
+    }
+
+    input {
+      border: none;
+      border-radius: $radius-xl;
+      background: #f3f3f3;
+      padding: 0.8rem 1.2rem;
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+      outline: none;
+      transition: box-shadow 0.2s;
+      box-shadow: 0 1px 2px #e8e8e8;
+      color: $text-color;
+      font-family: $font-family-primary;
+    }
+
+    input:focus {
+      box-shadow: 0 0 0 2px $green-background;
+    }
+
+    .form-info {
+      font-size: 0.95rem;
+      color: $green-background;
+      margin: 0.3rem 0 0.2rem 0;
+      text-align: left;
+      .form-link {
+        color: $green-background;
+        text-decoration: underline;
+        &:hover {
+          color: darkgreen;
+        }
+      }
+      .normal-text {
+        color: $text-color;
+      }
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: flex-start;
+      font-size: 0.95rem;
+      user-select: none;
+      input[type="checkbox"] {
+        accent-color: $green-background;
+        width: 18px;
+        height: 18px;
+        margin-top: 2px;
+      }
+    }
+
+    .form-button {
+      background: $green-background;
+      color: $white-color;
+      border: none;
+      border-radius: $radius-xxl;
+      padding: 0.9rem 0;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-top: 1.1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      box-shadow: 0 1px 2px #e8e8e8;
+      &:hover {
+        background: darkgreen;
+      }
+    }
+
+    .error {
+      color: $red-text-color;
+      margin-top: 0.5rem;
+      text-align: left;
+      font-size: 1rem;
+      display: block;
+    }
+
+    .success {
+      color: #27ae60;
+      margin-top: 0.5rem;
+      text-align: center;
+      font-size: 1rem;
+    }
+  }
+
+  .normal-text {
+    color: $text-color;
+  }
+}
+
+// XL breakpoint (büyük ekranlar)
+@include respons(xl) {
+  .sign-in-main {
+    max-width: 950px;
+    gap: 48px;
+    .info-box { width: 420px; }
+    .form-box { width: 370px; }
+  }
+}
+
+// LG breakpoint (laptop)
+@include respons(lg) {
+  .sign-in-main {
+    max-width: 800px;
+    gap: 32px;
+    .info-box { width: 350px; }
+    .form-box { width: 320px; }
+  }
+}
+
+// MD breakpoint (tablet)
+@include respons(md) {
+  .sign-in-main {
+    flex-direction: column;
+    align-items: center;
+    max-width: 98vw;
+    gap: 1rem;
+    padding-top: 0.7rem;
+    .info-box,
+    .form-box {
+      width: 95vw;
+      min-width: unset;
+      padding: 0.9rem 0.6rem;
+      margin: 0;
+      font-size: 0.97rem;
+    }
+    .form-box {
+      margin-top: 0;
+    }
+    .form-title {
+      font-size: 1.3rem !important;
+    }
+    .form-label {
+      font-size: 1rem !important;
+    }
+    input, .form-button {
+      font-size: 0.97rem !important;
+      padding: 0.7rem 1rem !important;
+    }
+    .info-title {
+      font-size: 1.05rem !important;
+    }
+    .info-desc {
+      font-size: 0.93rem !important;
+    }
+  }
+}
+
+// SM breakpoint (telefon)
+@include respons(sm) {
+  .sign-in-main {
+    padding-top: 0.3rem;
+    gap: 0.5rem;
+    .info-box,
+    .form-box {
+      width: 92vw;
+      min-width: 0;
+      padding: 0.5rem 0.4rem;
+      border-radius: $radius-md;
+      box-shadow: 0 1px 6px #e8e8e8;
+      font-size: 0.93rem;
+    }
+    .form-title {
+      font-size: 1.1rem !important;
+    }
+    .form-label {
+      font-size: 0.95rem !important;
+    }
+    input, .form-button {
+      font-size: 0.93rem !important;
+      padding: 0.6rem 0.7rem !important;
+    }
+    .info-title {
+      font-size: 0.97rem !important;
+    }
+    .info-desc {
+      font-size: 0.87rem !important;
+    }
+  }
+}
