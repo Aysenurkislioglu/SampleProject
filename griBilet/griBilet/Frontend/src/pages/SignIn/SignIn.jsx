@@ -5,6 +5,7 @@ import { FaLock } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { MdOutlineDiscount } from "react-icons/md";
 import { IoTicketOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 import "./signIn.scss";
 
 function SignIn() {
@@ -12,6 +13,7 @@ function SignIn() {
   const [error, setError] = useState({});
   const [success, setSuccess] = useState(false);
   const [checked, setChecked] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -59,14 +61,13 @@ function SignIn() {
         <p>Hoş geldiniz, hızlı bir şekilde üye olabilirsiniz.</p>
       </div>
       <div className="section">
-        {" "}
-        <div className=" sign-in-main">
+        <div className="sign-in-main">
           <div className="info-box">
             <div className="info-row">
               <div className="info-icon-title-desc">
                 <IoMdCheckmarkCircleOutline className="info-icon green-icon" />
                 <div>
-                  <div className="info-title green">Kaliteli Hizmet</div>
+                  <div className="info-title">Kaliteli Hizmet</div>
                   <div className="info-desc">
                     Hiçbir konuda mağduriyet yaşatmadan, sizin memnuniyetiniz
                     için çalışıyoruz.
@@ -78,7 +79,7 @@ function SignIn() {
               <div className="info-icon-title-desc">
                 <MdOutlineDiscount className="info-icon black-icon" />
                 <div>
-                  <div className="info-title green">En Uygun Fiyatlar</div>
+                  <div className="info-title">En Uygun Fiyatlar</div>
                   <div className="info-desc">
                     İnternet siteleri arasında en uygun fiyatı size garanti
                     ediyoruz.
@@ -90,9 +91,7 @@ function SignIn() {
               <div className="info-icon-title-desc">
                 <IoTicketOutline className="info-icon black-icon" />
                 <div>
-                  <div className="info-title green">
-                    Bilet Bulmanın En Kolay Yolu
-                  </div>
+                  <div className="info-title">Bilet Bulmanın En Kolay Yolu</div>
                   <div className="info-desc">
                     Çıktı almana gerek kalmadan, biletlerin hem sms hem de
                     e-posta ile adresine gelsin.
@@ -104,14 +103,22 @@ function SignIn() {
               <span className="info-footer-text">
                 GRIBILET hesabınız varsa giriş yapabilirsiniz
               </span>
-              <button className="info-login-btn">Giriş Yap</button>
+              <button
+                type="button"
+                className="info-login-btn"
+                onClick={() => navigate("/login")}
+              >
+                Giriş Yap
+              </button>
             </div>
           </div>
+
           <div className="form-box">
             <form onSubmit={handleSubmit}>
               <h2 className="form-title">Kayıt Formu</h2>
+
               <label className="form-label" htmlFor="email">
-                <MdEmail className="icon-email" />
+                <MdEmail className="icon" />
                 E-posta adresiniz
               </label>
               <input
@@ -124,8 +131,9 @@ function SignIn() {
                 required
               />
               {error.email && <div className="error">{error.email}</div>}
+
               <label className="form-label" htmlFor="password">
-                <FaLock className="icon-lock" />
+                <FaLock className="icon" />
                 Şifreniz
               </label>
               <input
@@ -138,8 +146,9 @@ function SignIn() {
                 required
               />
               {error.password && <div className="error">{error.password}</div>}
+
               <label className="form-label" htmlFor="name">
-                <FaUserCircle className="icon-user" />
+                <FaUserCircle className="icon" />
                 Adınız Soyadınız
               </label>
               <input
@@ -152,13 +161,13 @@ function SignIn() {
                 required
               />
               {error.name && <div className="error">{error.name}</div>}
+
               <div className="form-info">
                 <label className="checkbox-label">
                   <input
                     type="checkbox"
                     checked={checked}
                     onChange={(e) => setChecked(e.target.checked)}
-                    style={{ marginRight: "8px" }}
                   />
                   <span>
                     <a href="#" className="form-link">
@@ -175,6 +184,7 @@ function SignIn() {
                   <div className="error">{error.checkbox}</div>
                 )}
               </div>
+
               <button type="submit" className="form-button">
                 Kayıt Ol
               </button>
