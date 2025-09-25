@@ -1,4 +1,5 @@
 @import "../../styles/variables.scss";
+@import "../../styles/mixins.scss";
 
 body {
   background-color: $light-text-color;
@@ -82,22 +83,8 @@ h3 {
   color: $green-background;
 }
 
-button {
-  font-family: $font-family-primary;
-  font-size: $text-font-size;
-  border-radius: $radius-lg;
-  padding: $r-text-font-size;
-  border: 0px;
-  cursor: pointer;
-  background-color: $green-background;
-  color: $white-color;
-  justify-self: center;
-  inline-size: max-content;
-}
-
-button:hover:not(:disabled) {
-  box-shadow: 0 12px 24px rgba($footer-background, 0.2);
-  transform: translateY(-2px);
+.signup-redirect-button {
+  @include button;
 }
 
 // LOGIN BOX
@@ -135,17 +122,15 @@ button:hover:not(:disabled) {
   row-gap: $h3-font-size;
 }
 
-input {
-  font-family: $font-family-primary;
-  font-size: $text-font-size;
-  padding: $r-text-font-size;
-  border: 0px;
-  box-shadow: inset 0 1px 2px rgba($footer-background, 0.1);
-  border-radius: $radius-md;
-  background-color: $light-text-color;
+.input__style {
+  @include input;
 }
 
-// Icon input wrappers
+.login-button {
+  @include button;
+}
+
+// Icon input wrapper
 .input-wrapper {
   position: relative;
   display: flex;

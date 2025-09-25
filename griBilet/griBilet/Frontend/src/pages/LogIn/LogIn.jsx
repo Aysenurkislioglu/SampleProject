@@ -9,7 +9,6 @@ const LogIn = () => {
     password: "",
   });
 
-  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
@@ -26,7 +25,6 @@ const LogIn = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
     setError("");
 
     try {
@@ -54,8 +52,6 @@ const LogIn = () => {
       setError(
         "Ağ hatası. Lütfen bağlantınızı kontrol edin ve tekrar deneyin."
       );
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -91,7 +87,6 @@ const LogIn = () => {
             type="button"
             className="signup-redirect-button"
             onClick={handleSignupRedirect}
-            disabled={isLoading}
           >
             Üye ol
           </button>
@@ -105,13 +100,14 @@ const LogIn = () => {
                   <FiMail />
                 </span>
                 <input
+                  className="input__style"
                   type="email"
                   id="email"
                   name="email"
                   placeholder="E-posta giriniz"
                   value={formData.email}
                   onChange={handleInputChange}
-                  disabled={isLoading}
+                  onKeyDown={handleKeyPress}
                   required
                 />
               </div>
@@ -121,32 +117,22 @@ const LogIn = () => {
                   <FiLock />
                 </span>
                 <input
+                  className="input__style"
                   type="password"
                   id="password"
                   name="password"
                   placeholder="Şifre giriniz"
                   value={formData.password}
                   onChange={handleInputChange}
-                  disabled={isLoading}
+                  onKeyDown={handleKeyPress}
                   required
                 />
               </div>
 
               {error && <p className="error-message">{error}</p>}
 
-              <button
-                type="submit"
-                className="login-button"
-                disabled={isLoading}
-              >
-                {isLoading ? (
-                  <span className="loading-spinner">
-                    <span className="spinner"></span>
-                    Logging in...
-                  </span>
-                ) : (
-                  "Giriş Yap"
-                )}
+              <button type="submit" className="login-button">
+                Giriş Yap
               </button>
             </form>
           </div>

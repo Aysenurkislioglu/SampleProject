@@ -2,8 +2,6 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql2/promise");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
 
 const app = express();
 app.use(cors());
@@ -22,17 +20,10 @@ const pool = mysql.createPool({
   ssl: { rejectUnauthorized: false },
 });
 
-// Utility: generate JWT
-function generateToken(user) {
-  const payload = { id: user.id, email: user.email };
-  const secret = process.env.JWT_SECRET || "dev-secret-change-me";
-  return jwt.sign(payload, secret, { expiresIn: "7d" });
-}
-
 // Sağlık kontrolü
 app.get("/api/health", (req, res) => res.json({ ok: true }));
 
-// LOGIN
+// LOGIN (plaintext kontrol)
 app.post("/api/login", async (req, res) => {
   try {
     let { email, password } = req.body || {};
@@ -68,37 +59,15 @@ app.post("/api/login", async (req, res) => {
 
     const user = rows[0];
 
-    const stored = user.password || "";
-    let passwordOk = false;
-    if (
-      stored.startsWith("$2a$") ||
-      stored.startsWith("$2b$") ||
-      stored.startsWith("$2y$")
-    ) {
-      try {
-        passwordOk = await bcrypt.compare(password, stored);
-      } catch (e) {
-        console.error("Bcrypt compare error", e);
-        return res
-          .status(500)
-          .json({ success: false, error: "Şifre doğrulama hatası" });
-      }
-    } else {
-      passwordOk = stored === password;
-    }
-
-    if (!passwordOk) {
+    if (user.password !== password) {
       return res
         .status(401)
         .json({ success: false, error: "Geçersiz e-posta veya şifre" });
     }
 
-    const token = generateToken({ id: user.id, email: user.email });
-
     return res.json({
       success: true,
       message: "Giriş başarılı",
-      token,
       user: { id: user.id, email: user.email, name: user.name },
     });
   } catch (error) {
@@ -186,10 +155,9 @@ app.post("/api/signin", async (req, res) => {
     if (!email || !password || !name) {
       return res.status(400).json({ error: "Tüm alanlar zorunlu!" });
     }
-    const [existing] = await pool.query(
-      "SELECT * FROM users WHERE email = ?",
-      [email]
-    );
+    const [existing] = await pool.query("SELECT * FROM users WHERE email = ?", [
+      email,
+    ]);
     if (existing.length > 0) {
       return res.status(409).json({ error: "Bu e-posta zaten kayıtlı!" });
     }
@@ -203,7 +171,6 @@ app.post("/api/signin", async (req, res) => {
     res.status(500).json({ error: "Sunucu hatası!" });
   }
 });
-
 
 // Hata yakalayıcı
 app.use((err, req, res, next) => {

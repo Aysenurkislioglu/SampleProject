@@ -29,3 +29,33 @@
   box-sizing: border-box;
   font-family: $font-family-primary;
 }
+
+@mixin input {
+  font-family: $font-family-primary;
+  font-size: $text-font-size;
+  border-radius: $radius-lg;
+  padding: $r-text-font-size;
+  border: 1px solid $light-text-color;
+  outline: none;
+  color: $text-color;
+}
+
+@mixin button {
+  font-family: $font-family-primary;
+  font-size: $text-font-size;
+  border-radius: $radius-lg;
+  padding: $r-text-font-size;
+  border: 0;
+  cursor: pointer;
+  background-color: $green-background;
+  color: $white-color;
+  justify-self: center;
+  transition: background-color 180ms ease, box-shadow 200ms ease,
+    transform 200ms ease;
+
+  &:hover:not(:disabled) {
+    background-color: darken($green-background, 12%);
+    box-shadow: 0 12px 24px rgba($footer-background, 0.2);
+    transform: translateY(-2px);
+  }
+}
